@@ -81,10 +81,11 @@ textarea {
   font-size: 0.95rem;
   font-weight: 600;
   border: 2px solid #4a90e2;
-  background: #fff;
+  background: #c0c0c8;
   color: #4a90e2;
+  opacity: 0.6;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, opacity 0.2s;
 }
 
 .auth-toggle-btn:first-child {
@@ -98,10 +99,12 @@ textarea {
 .auth-toggle-btn.active {
   background-color: #4a90e2;
   color: #fff;
+  opacity: 1;
 }
 
 .auth-toggle-btn:not(.active):hover {
-  background-color: #eaf2fb;
+  background-color: #a8a8b3;
+  opacity: 0.8;
 }
 
 /* Auth Card */
