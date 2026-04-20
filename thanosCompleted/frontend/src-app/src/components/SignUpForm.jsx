@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import { signUp } from '../utilities/users-service';
-
+import { Component } from "react";
+import { signUp } from "../utilities/users-service";
 
 export default class SignUpForm extends Component {
   state = {
@@ -14,22 +13,24 @@ export default class SignUpForm extends Component {
   handleChange = (evt) => {
     this.setState({
       [evt.target.name]: evt.target.value,
-      error: ''
+      error: "",
     });
   };
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-        const formData = {...this.state};
-        delete formData.error;
-        delete formData.confirm;
-        const user = await signUp(formData);
-        console.log(user)
-
+      const formData = { ...this.state };
+      delete formData.error;
+      delete formData.confirm;
+      const user = await signUp(formData);
+      console.log(user);
+      this.props.setUser(user);
     } catch (error) {
-        this.setState({
-            error: "Sign Up Failed - Try Again"
-        })
+      const msg =
+        error.message === "Email already exists"
+          ? "Sign Up Failed - email already used!"
+          : "Sign Up Failed - Try Again";
+      this.setState({ error: msg });
     }
   };
 
@@ -37,10 +38,10 @@ export default class SignUpForm extends Component {
     const disable = this.state.password !== this.state.confirm;
 
     return (
-      <>
-        <div>SignUpForm</div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit} style={{margin:"1em"}}>
+      <div className="auth-card">
+        <h2 className="auth-title">Create Account</h2>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          <div className="auth-field">
             <label>Name</label>
             <input
               type="text"
@@ -49,6 +50,8 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
+          </div>
+          <div className="auth-field">
             <label>Email</label>
             <input
               type="email"
@@ -57,6 +60,8 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
+          </div>
+          <div className="auth-field">
             <label>Password</label>
             <input
               type="password"
@@ -65,7 +70,9 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <label>Confirm</label>
+          </div>
+          <div className="auth-field">
+            <label>Confirm Password</label>
             <input
               type="password"
               name="confirm"
@@ -73,14 +80,15 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <button type="submit" disabled={disable}>
-              SIGN UP
-            </button>
-          </form>
-        </div>
-        <p className="error-message">{this.state.error}</p>
-        
-      </>
+          </div>
+          {this.state.error && (
+            <p className="auth-error">{this.state.error}</p>
+          )}
+          <button className="auth-btn" type="submit" disabled={disable}>
+            Sign Up
+          </button>
+        </form>
+      </div>
     );
   }
 }

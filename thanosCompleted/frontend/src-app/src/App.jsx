@@ -142,63 +142,61 @@ function App() {
 
   return (
     <div className="App">
-      {user ? <Profile user={user} /> : <AuthPage setUser={setUser} />}
+      {user ? <Profile user={user} setUser={setUser} /> : <AuthPage setUser={setUser} />}
 
-      <hr />
-      <h1 className="noteTitle">Notes DashBoard</h1>
-      <div className="formAdmin">
-        <div className="formContainer">
-          <h2> + New Note</h2>
-          <form onSubmit={createNote}>
-            <input
-              name="title"
-              value={createForm.title}
-              onChange={updateCreateFormField}
-            />
-            <input
-              name="body"
-              value={createForm.body}
-              onChange={updateCreateFormField}
-            />
-            <button>CreateNote </button>
-          </form>
-          {updateForm._id && (
-            <>
-              {/* --------Update Form */}
-              <h1>Update</h1>
-              <div className="formAdmin">
-                <form onSubmit={updateNote}>
-                  <input
-                    name="title"
-                    value={updateForm.title}
-                    placeholder="Enter Title"
-                    onChange={handleUpdateFieldChange}
-                  />
-                  <input
-                    name="body"
-                    value={updateForm.body}
-                    placeholder="Enter Body"
-                    onChange={handleUpdateFieldChange}
-                  />
-
-                  <button type="submit">Submit</button>
-                </form>
-              </div>
-            </>
+      {user && (
+        <>
+          <hr />
+          <h1 className="noteTitle">Notes DashBoard</h1>
+          <div className="formAdmin">
+            <div className="formContainer">
+              <h2> + New Note</h2>
+              <form onSubmit={createNote}>
+                <input
+                  name="title"
+                  value={createForm.title}
+                  onChange={updateCreateFormField}
+                />
+                <input
+                  name="body"
+                  value={createForm.body}
+                  onChange={updateCreateFormField}
+                />
+                <button>CreateNote </button>
+              </form>
+              {updateForm._id && (
+                <>
+                  <h1>Update</h1>
+                  <div className="formAdmin">
+                    <form onSubmit={updateNote}>
+                      <input
+                        name="title"
+                        value={updateForm.title}
+                        placeholder="Enter Title"
+                        onChange={handleUpdateFieldChange}
+                      />
+                      <input
+                        name="body"
+                        value={updateForm.body}
+                        placeholder="Enter Body"
+                        onChange={handleUpdateFieldChange}
+                      />
+                      <button type="submit">Submit</button>
+                    </form>
+                  </div>
+                </>
+              )}
+            </div>
+            <hr />
+          </div>
+          {notes ? (
+            <Index info={notes} deleteFunc={deleteNote} editFunc={toggleUpdate} />
+          ) : (
+            <p>Notes: {notes}</p>
           )}
-        </div>
-        <hr />
-        {/* update Ternary -> if form is active, display updateForm component */}
-      </div>
-      {/* Notes ternary -> [IF] notes = true, [THEN] render Index,[ELSE] render Note component */}
-
-      {notes ? (
-        <Index info={notes} deleteFunc={deleteNote} editFunc={toggleUpdate} />
-      ) : (
-        // <Note />
-        <p>Notes: {notes}</p>
+          <hr />
+        </>
       )}
-      <hr />
     </div>
   );
 }

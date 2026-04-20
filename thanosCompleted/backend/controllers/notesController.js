@@ -1,5 +1,4 @@
-
-const Note = require('../models/note')
+const Note = require("../models/note");
 
 const fetchNotes = async (req, res) => {
   // 1. Get all notes from database.
@@ -26,7 +25,7 @@ const createNote = async (req, res) => {
   // 3. Respond with copy of new Note
   // const title = req.body.title;
   // const body = req.body.body;
-  const {title,body} = req.body
+  const { title, body } = req.body;
 
   // ------------------------------(1)
   const note = await Note.create({
@@ -48,7 +47,7 @@ const updateNote = async (req, res) => {
   // ------------------------------(1)
   // const title = req.body.title;
   // const body = req.body.body;
-const {title,body} = req.body
+  const { title, body } = req.body;
   // ------------------------------(2)
   const note = await Note.findByIdAndUpdate(noteId, {
     title: title,
@@ -66,7 +65,7 @@ const deleteNote = async (req, res) => {
   const noteId = req.params.id;
   // ------------------------------(1)
   await Note.deleteOne({
-    id: noteId,
+    _id: noteId,
   });
   // ------------------------------(2)
   res.json({ success: "Record Deleted Successfully" });
@@ -78,5 +77,5 @@ module.exports = {
   fetchNotes,
   updateNote,
   createNote,
-  deleteNote
+  deleteNote,
 };

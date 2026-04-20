@@ -25,7 +25,10 @@ async function create(req, res) {
     res.json(token);
     console.log(`User : ${req.body}, Token: ${token}`);
   } catch (error) {
-    res.status(400).json(error);
+    console.log("SIGNUP ERROR:", error.code, error.message);
+    const message =
+      error.code === 11000 ? "Email already exists" : "Sign Up Failed";
+    res.status(400).json({ message });
   }
 }
 
