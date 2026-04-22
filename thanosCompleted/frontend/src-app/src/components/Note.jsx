@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-function Note({ note, deleteFunc, updateFunc }) {
+function Note({ note, deleteFunc, updateFunc, addBodyFunc }) {
   const [bodies, setBodies] = useState({});
   const [checked, setChecked] = useState({});
   const [isDirty, setIsDirty] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [addingBody, setAddingBody] = useState(false);
+  const [newBodyText, setNewBodyText] = useState("");
 
   useEffect(() => {
     setBodies(
@@ -34,6 +36,13 @@ function Note({ note, deleteFunc, updateFunc }) {
     setIsDirty(false);
   };
 
+  const handleAddBody = async () => {
+    if (!newBodyText.trim()) return;
+    await addBodyFunc(note._id, newBodyText.trim());
+    setNewBodyText("");
+    setAddingBody(false);
+  };
+
   return (
     <div className="container">
       <div className="card-header">
@@ -59,6 +68,27 @@ function Note({ note, deleteFunc, updateFunc }) {
           />
         </div>
       ))}
+
+      {addingBody ? (
+        <div className="add-body-row">
+          <input
+            className="add-body-input"
+            type="text"
+            value={newBodyText}
+            onChange={(e) => setNewBodyText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleAddBody();
+              if (e.key === "Escape") { setAddingBody(false); setNewBodyText(""); }
+            }}
+            placeholder="New item..."
+            autoFocus
+          />
+          <button className="add-body-confirm" onClick={handleAddBody}>Add</button>
+          <button className="add-body-cancel" onClick={() => { setAddingBody(false); setNewBodyText(""); }}>✕</button>
+        </div>
+      ) : (
+        <button className="add-body-btn" onClick={() => setAddingBody(true)}>+ Add Item</button>
+      )}
 
       {isDirty && (
         <div className="card-footer">

@@ -436,6 +436,61 @@
   color: #aaa;
 }
 
+/* Add Item */
+.add-body-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0;
+  background: none;
+  border: 1px dashed #4a90e2;
+  border-radius: 5px;
+  color: #4a90e2;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-body-btn:hover {
+  background-color: #f0f7ff;
+}
+
+.add-body-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.add-body-input {
+  flex: 1;
+  border: 1px solid #4a90e2;
+  border-radius: 5px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.add-body-confirm {
+  padding: 0.3rem 0.6rem;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-body-cancel {
+  padding: 0.3rem 0.5rem;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  color: #888;
+}
+
 /* Save button */
 .card-footer {
   display: flex;

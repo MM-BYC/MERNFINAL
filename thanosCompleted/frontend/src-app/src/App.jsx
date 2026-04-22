@@ -115,6 +115,11 @@ function App() {
     const res = await axios.put(`/notes/${noteId}`, { bodyId, text });
     setNotes((prev) => prev.map((n) => (n._id === noteId ? res.data.note : n)));
   };
+
+  const addBodyToNote = async (noteId, text) => {
+    const res = await axios.post(`/notes/${noteId}/bodies`, { text });
+    setNotes((prev) => prev.map((n) => (n._id === noteId ? res.data.note : n)));
+  };
   // -------------------------------------[DELETE]
   const deleteNote = async (_id) => {
     await axios.delete(`/notes/${_id}`);
@@ -198,7 +203,7 @@ function App() {
 
           <div className="notes-grid">
             {notes ? (
-              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} />
+              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} addBodyFunc={addBodyToNote} />
             ) : (
               <p>No notes yet.</p>
             )}

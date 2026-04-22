@@ -46,4 +46,14 @@ const deleteNote = async (req, res) => {
   res.json({ success: "Record Deleted Successfully" });
 };
 
-module.exports = { fetchNote, fetchNotes, updateNote, createNote, deleteNote };
+const addBody = async (req, res) => {
+  const { text } = req.body;
+  const note = await Note.findOneAndUpdate(
+    { _id: req.params.id, user: req.user._id },
+    { $push: { bodies: { text } } },
+    { new: true }
+  );
+  res.json({ note });
+};
+
+module.exports = { fetchNote, fetchNotes, updateNote, createNote, deleteNote, addBody };
