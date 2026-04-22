@@ -145,7 +145,10 @@
 }
 
 .logout-btn {
+  -webkit-appearance: none;
+  appearance: none;
   padding: 0.4rem 0;
+  margin: 0;
   background-color: #fff;
   color: #e74c3c;
   border: 2px solid #e74c3c;
@@ -153,6 +156,9 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  width: fit-content;
   transition: background-color 0.2s, color 0.2s;
 }
 
