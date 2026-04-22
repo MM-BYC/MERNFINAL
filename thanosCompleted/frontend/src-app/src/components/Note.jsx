@@ -109,6 +109,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
           draggable={isDraggableCard}
           onDragStart={isDraggableCard ? (e) => handleDragStart(e, b) : undefined}
         >
+          {isDraggableCard && <span className="drag-handle">⠿</span>}
           <button
             className={`check-box${checked[b._id] ? " checked" : ""}`}
             onClick={() => toggleChecked(b._id)}
