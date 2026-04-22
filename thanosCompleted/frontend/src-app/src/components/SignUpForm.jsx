@@ -49,21 +49,21 @@ export default class SignUpForm extends Component {
         <h2 className="auth-title">Create Account</h2>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="auth-field">
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              value={this.state.lastName}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="auth-field">
             <label>First Name</label>
             <input
               type="text"
               name="firstName"
               value={this.state.firstName}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="auth-field">
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
               onChange={this.handleChange}
               required
             />
