@@ -330,6 +330,12 @@
   text-align: left;
   border: none;
   margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.container.is-adding {
+  z-index: 10;
 }
 
 .titler {

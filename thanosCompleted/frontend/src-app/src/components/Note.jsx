@@ -45,7 +45,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) 
   };
 
   return (
-    <div className="container">
+    <div className={`container${addingBody ? " is-adding" : ""}`}>
       <div className="card-header">
         <h2 className="titler">{note.title}</h2>
         <button
