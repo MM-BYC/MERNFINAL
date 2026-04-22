@@ -29,19 +29,11 @@ app.use(cors({
 
 
 // ------->------->-------> Routes
-app.get("/notes", notesController.fetchNotes);
-// +++++++++++++ {READ} ++++++++++++++
-
-app.get("/notes/:id", notesController.fetchNote);
-// +++++++++++++ {READ} ++++++++++++++
-
-app.post("/notes", notesController.createNote);
-
-// +++++++++++++ {CREATE} ++++++++++++++
-app.put("/notes/:id", notesController.updateNote);
-// +++++++++++++ {UPDATE} ++++++++++++++
-
-app.delete("/notes/:id", notesController.deleteNote);
+app.get("/notes", ensureLoggedIn, notesController.fetchNotes);
+app.get("/notes/:id", ensureLoggedIn, notesController.fetchNote);
+app.post("/notes", ensureLoggedIn, notesController.createNote);
+app.put("/notes/:id", ensureLoggedIn, notesController.updateNote);
+app.delete("/notes/:id", ensureLoggedIn, notesController.deleteNote);
 // +++++++++++++ {DELETE} ++++++++++++++
 // -------------------------------------------------------[userRoutes]
 app.post('/api/users', usersController.create);
