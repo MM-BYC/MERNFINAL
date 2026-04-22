@@ -49,7 +49,7 @@ function Note({ note, deleteFunc, updateFunc }) {
             className={`check-box${checked[b._id] ? " checked" : ""}`}
             onClick={() => toggleChecked(b._id)}
           >
-            {checked[b._id] ? "✕" : ""}
+            X
           </button>
           <input
             className={`body-editable${checked[b._id] ? " body-checked" : ""}`}

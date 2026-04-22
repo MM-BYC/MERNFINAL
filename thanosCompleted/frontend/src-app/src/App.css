@@ -385,9 +385,9 @@
   border: 1.5px solid #ccc;
   border-radius: 3px;
   background: #fff;
-  color: #e74c3c;
-  font-size: 0.7rem;
-  font-weight: 700;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 900;
   cursor: pointer;
   display: flex;
   align-items: center;
