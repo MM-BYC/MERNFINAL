@@ -192,4 +192,59 @@ The app supports **Light**, **Dark**, and **System** (follows your device settin
 
 ---
 
+## Project Structure
+
+```text
+thanosCompleted/
+├── backend/                        # Server-side application (Node.js + Express)
+│   ├── server.js                   # Entry point — starts the server, registers all routes
+│   ├── package.json                # Backend dependencies (express, mongoose, bcrypt, jwt, etc.)
+│   ├── config/
+│   │   ├── connectToDb.js          # Establishes the MongoDB database connection
+│   │   ├── checkToken.js           # Middleware — reads and validates the JWT on every request
+│   │   ├── ensureLoggedIn.js       # Middleware — blocks unauthenticated requests to protected routes
+│   │   └── emailService.js         # Sends verification and password reset emails via third-party service
+│   ├── controllers/
+│   │   ├── notesController.js      # Handles all note operations: create, read, update, delete, move items
+│   │   └── usersController.js      # Handles signup, login, email verification, and password reset
+│   └── models/
+│       ├── user.js                 # MongoDB schema for user accounts (name, email, password hash, tokens)
+│       └── note.js                 # MongoDB schema for notes/cards (title, items list, owner reference)
+│
+└── frontend/                       # Client-side application (React + Vite)
+    ├── index.html                  # Root HTML file — Vite injects the React bundle here
+    ├── vite.config.js              # Vite build configuration and local dev proxy settings
+    ├── package.json                # Frontend dependencies (react, react-router-dom, axios, etc.)
+    ├── eslint.config.js            # Code quality rules for the frontend
+    ├── public/
+    │   └── vite.svg                # Static assets served as-is (not processed by Vite)
+    └── src/                        # All React source code
+        ├── main.jsx                # React entry point — mounts the app and defines page routes
+        ├── App.jsx                 # Root component — controls dashboard, modal, and note state
+        ├── App.css                 # All application styles including glassmorphism and theme variables
+        ├── index.css               # Base browser resets and font settings
+        ├── assets/                 # Images and static files used inside components
+        ├── components/
+        │   ├── Index.jsx           # Renders the full grid of note cards
+        │   ├── Note.jsx            # Individual card — displays title, items, drag-and-drop, delete
+        │   ├── SignUpForm.jsx       # Create account form
+        │   ├── LoginForm.jsx        # Log in form
+        │   ├── SnapNoteBrand.jsx   # Animated brand title with parallax effect
+        │   ├── ThemeToggle.jsx     # Light / Dark / System theme switcher
+        │   ├── DateDisplay.jsx     # Live date display shown on the dashboard
+        │   ├── Navbar.jsx          # Navigation bar component
+        │   └── Profile.jsx         # User profile display component
+        ├── pages/
+        │   ├── AuthPage.jsx        # Sign Up / Log In toggle page
+        │   ├── VerifyEmailPage.jsx  # Handles the email verification link from inbox
+        │   ├── ForgotPasswordPage.jsx  # Forgot password request form
+        │   └── ResetPasswordPage.jsx   # New password entry form (from reset email link)
+        └── utilities/
+            ├── users-service.js    # Business logic for auth: getUser, logOut, signUp, login
+            ├── users-api.js        # API call definitions for user-related endpoints
+            └── send-request.js     # Base HTTP request helper used by all API calls
+```
+
+---
+
 *Built with MongoDB · Express · React · Node.js*
