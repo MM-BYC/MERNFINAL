@@ -151,10 +151,15 @@
 .modal-drag-handle {
   cursor: grab;
   user-select: none;
+  background: #e8e8ec;
+  border-radius: 8px 8px 0 0;
+  margin: -2rem -2rem 1.2rem -2rem;
+  padding: 0.85rem 1.2rem;
 }
 
 .modal-drag-handle:active {
   cursor: grabbing;
+  background: #d8d8de;
 }
 
 .modal-close {
