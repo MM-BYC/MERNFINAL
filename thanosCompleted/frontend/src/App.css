@@ -76,9 +76,9 @@ body {
 }
 
 /* App Brand */
-@keyframes snapnote-shimmer {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes chrome-sweep {
+  0%   { background-position: -150% center; }
+  100% { background-position: 250% center; }
 }
 
 .snapnote-brand {
@@ -88,12 +88,29 @@ body {
   letter-spacing: 0.04em;
   margin: 0.5rem 0 1rem;
   display: inline-block;
-  background: linear-gradient(90deg, #1a535c 0%, #4ecdc4 40%, #1a7a70 65%, #1a535c 100%);
-  background-size: 200% auto;
+  background: linear-gradient(
+    105deg,
+    #8ca8c0 0%,
+    #ddeeff 14%,
+    #ffffff 24%,
+    #a0bcd4 38%,
+    #d8eaf8 52%,
+    #ffffff 60%,
+    #8aaabb 74%,
+    #5580a0 87%,
+    #c0d8ee 100%
+  );
+  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: snapnote-shimmer 5s linear infinite;
+  animation: chrome-sweep 3.5s linear infinite;
+  text-shadow:
+    1px 1px 0 rgba(70, 100, 130, 0.6),
+    2px 2px 0 rgba(55, 82, 110, 0.5),
+    3px 3px 0 rgba(42, 65, 90, 0.4),
+    4px 4px 0 rgba(30, 50, 72, 0.3),
+    5px 5px 12px rgba(0, 20, 50, 0.45);
   transition: transform 0.12s ease-out;
   will-change: transform;
   transform-style: preserve-3d;
@@ -1067,8 +1084,19 @@ body {
 }
 
 [data-theme="dark"] .snapnote-brand {
-  background: linear-gradient(90deg, #4ecdc4 0%, #88f5ee 40%, #2ab8ae 65%, #4ecdc4 100%);
-  background-size: 200% auto;
+  background: linear-gradient(
+    105deg,
+    #3a5870 0%,
+    #90c0e0 14%,
+    #ddf0ff 24%,
+    #5880a8 38%,
+    #a8d0ee 52%,
+    #ddeeff 60%,
+    #3a6080 74%,
+    #1e3c58 87%,
+    #6898c0 100%
+  );
+  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
