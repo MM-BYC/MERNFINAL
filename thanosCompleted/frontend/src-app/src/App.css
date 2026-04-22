@@ -858,7 +858,7 @@
   }
 }
 
-/* Portrait phones and tablets — To Buy and Bought always stacked at top */
+/* Portrait phones and tablets — To Buy and Trash Bin always stacked at top */
 @media (orientation: portrait) and (max-width: 768px) {
   .notes-grid {
     grid-template-columns: 1fr;

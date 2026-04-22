@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const isToBuy = note.title === "To Buy";
-  const isBought = note.title === "Bought";
+  const isTrashBin = note.title === "Trash Bin";
   const isDraggableCard = true;
 
   const [bodies, setBodies] = useState({});
@@ -83,13 +83,13 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
 
   return (
     <div
-      className={`container${isToBuy ? " card-tobuy" : ""}${isBought ? " card-bought" : ""}${addingBody ? " is-adding" : ""}${dragOver && isDraggableCard ? " drag-over" : ""}`}
+      className={`container${isToBuy ? " card-tobuy" : ""}${isTrashBin ? " card-bought" : ""}${addingBody ? " is-adding" : ""}${dragOver && isDraggableCard ? " drag-over" : ""}`}
       onDragOver={isDraggableCard ? handleDragOver : undefined}
       onDragLeave={isDraggableCard ? handleDragLeave : undefined}
       onDrop={isDraggableCard ? handleDrop : undefined}
     >
       <div className="card-header">
-        <h2 className={`titler${isToBuy ? " titler-tobuy" : ""}${isBought ? " titler-bought" : ""}`}>{note.title}</h2>
+        <h2 className={`titler${isToBuy ? " titler-tobuy" : ""}${isTrashBin ? " titler-bought" : ""}`}>{note.title}</h2>
         <button
           className="card-delete-btn"
           disabled={!Object.values(checked).some(Boolean)}
@@ -117,7 +117,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
             {checked[b._id] ? "X" : ""}
           </button>
           <input
-            className={`body-editable${checked[b._id] || isBought ? " body-checked" : ""}`}
+            className={`body-editable${checked[b._id] || isTrashBin ? " body-checked" : ""}`}
             type="text"
             value={bodies[b._id] ?? b.text}
             onChange={(e) => handleBodyChange(b._id, e.target.value)}
