@@ -61,6 +61,7 @@ app.use(express.static(path.join(__dirname, '../frontend/src-app/dist')));
 //     Without this, refreshing or directly visiting a React route (e.g. /login) would return a 404.
 //     Instead, Express sends back index.html and lets React Router handle the navigation client-side.
 app.get('*', (req, res) => {
+    res.set('Cache-Control', 'no-store');
     res.sendFile(path.join(__dirname, '../frontend/src-app/dist', 'index.html'));
 });
 
