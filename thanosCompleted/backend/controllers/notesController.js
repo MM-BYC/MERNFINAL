@@ -67,9 +67,11 @@ const addBody = async (req, res) => {
 
 const deleteCheckedBodies = async (req, res) => {
   const { bodyIds } = req.body;
+  const validIds = (bodyIds || []).filter(id => /^[0-9a-fA-F]{24}$/.test(id));
+  if (!validIds.length) return res.json({ note: null });
   const note = await Note.findOneAndUpdate(
     { _id: req.params.id, user: req.user._id },
-    { $pull: { bodies: { _id: { $in: bodyIds } } } },
+    { $pull: { bodies: { _id: { $in: validIds } } } },
     { new: true }
   );
   if (note && note.bodies.length === 0 && note.title !== "To Buy" && note.title !== "Trash Bin") {

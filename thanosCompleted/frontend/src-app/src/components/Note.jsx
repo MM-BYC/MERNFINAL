@@ -50,6 +50,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
   };
 
   const handleDragStart = (e, b) => {
+    if (String(b._id).startsWith("temp_")) { e.preventDefault(); return; }
     e.dataTransfer.setData("application/json", JSON.stringify({
       noteId: note._id,
       bodyId: String(b._id),
