@@ -132,16 +132,16 @@ function App() {
       {user && (
         <>
           <div className="dashboard-sticky">
-            <h1 className="snapnote-brand">SnapNote</h1>
+            <div className="brand-row">
+              <h1 className="snapnote-brand">SnapNote</h1>
+              <DateDisplay />
+            </div>
             <div className="dashboard-header">
               <div className="dashboard-header-center">
                 <h1 className="dashboard-title">Notes Dashboard</h1>
                 <p className="dashboard-greeting">Welcome, {user.firstname} {user.lastname}</p>
               </div>
-              <div className="dashboard-right">
-                <DateDisplay />
-                <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
-              </div>
+              <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
             </div>
 
             <div className="dashboard-toolbar">

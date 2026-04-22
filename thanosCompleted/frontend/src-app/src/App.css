@@ -124,11 +124,15 @@
   margin-bottom: 1.5rem;
 }
 
-.dashboard-right {
+.brand-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-row .snapnote-brand {
+  margin: 0.5rem 0;
+  text-align: left;
 }
 
 .logout-btn {
