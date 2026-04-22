@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Index from "./components/Index";
 import AuthPage from "./pages/AuthPage";
+import DateDisplay from "./components/DateDisplay";
 import { getUser, logOut } from "./utilities/users-service";
 function App() {
   const [user, setUser] = useState(getUser());
@@ -130,7 +131,10 @@ function App() {
               <h1 className="dashboard-title">Notes Dashboard</h1>
               <p className="dashboard-greeting">Welcome, {user.firstname} {user.lastname}</p>
             </div>
-            <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
+            <div className="dashboard-right">
+              <DateDisplay />
+              <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
+            </div>
           </div>
 
           <div className="dashboard-toolbar">

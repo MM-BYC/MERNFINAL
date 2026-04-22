@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { verifyEmail } from "../utilities/users-service";
 import "../App.css";
+import DateDisplay from "../components/DateDisplay";
 
 export default function VerifyEmailPage() {
   const { token } = useParams();
@@ -16,6 +17,7 @@ export default function VerifyEmailPage() {
 
   return (
     <>
+    <DateDisplay className="page-date" />
     <h1 className="snapnote-brand">SnapNote</h1>
     <div className="auth-card">
       <h2 className="auth-title">Email Verification</h2>

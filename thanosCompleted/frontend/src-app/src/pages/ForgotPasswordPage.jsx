@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { forgotPassword } from "../utilities/users-service";
 import "../App.css";
+import DateDisplay from "../components/DateDisplay";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <>
+      <DateDisplay className="page-date" />
       <h1 className="snapnote-brand">SnapNote</h1>
     <div className="auth-card">
       <h2 className="auth-title">Forgot Password</h2>

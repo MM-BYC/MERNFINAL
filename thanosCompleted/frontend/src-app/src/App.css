@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  position: relative;
 }
 
 .logo {
@@ -40,6 +41,32 @@
 .read-the-docs {
   color: #888;
 }
+/* Date Display */
+.date-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+}
+
+.date-day {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.date-date {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* Date on auth/standalone pages — pinned top-right */
+.page-date {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
 /* App Brand */
 .snapnote-brand {
   text-align: center;
@@ -85,6 +112,13 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1.5rem;
+}
+
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
 }
 
 .logout-btn {
