@@ -55,13 +55,13 @@ app.post('/api/users/reset-password/:token', usersController.resetPassword);
 // ------->------->-------> Serve React Frontend (Production / Render Deployment)
 // [1] Tells Express to serve all static files (HTML, CSS, JS, images) from React's build folder.
 //     The build folder is created when you run "npm run build" inside the frontend directory.
-app.use(express.static(path.join(__dirname, '../frontend/src-app/build')));
+app.use(express.static(path.join(__dirname, '../frontend/src-app/dist')));
 
 // [2] Catches every route that is NOT an API route (like /notes or /api/users).
 //     Without this, refreshing or directly visiting a React route (e.g. /login) would return a 404.
 //     Instead, Express sends back index.html and lets React Router handle the navigation client-side.
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/src-app/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../frontend/src-app/dist', 'index.html'));
 });
 
 // ------->------->-------> Server
