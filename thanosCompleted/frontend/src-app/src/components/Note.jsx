@@ -91,8 +91,10 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) 
             placeholder="New item..."
             autoFocus
           />
-          <button className="add-body-confirm" onClick={handleAddBody}>Add</button>
-          <button className="add-body-cancel" onClick={() => { setAddingBody(false); setNewBodyText(""); }}>✕</button>
+          <div className="add-body-actions">
+            <button className="add-body-confirm" onClick={handleAddBody}>Add</button>
+            <button className="add-body-cancel" onClick={() => { setAddingBody(false); setNewBodyText(""); }}>✕</button>
+          </div>
         </div>
       ) : (
         <button className="add-body-btn" onClick={() => setAddingBody(true)}>+ Add Item</button>

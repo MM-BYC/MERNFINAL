@@ -468,12 +468,13 @@
 
 .add-body-row {
   display: flex;
+  flex-direction: column;
   gap: 0.4rem;
   margin-top: 0.5rem;
 }
 
 .add-body-input {
-  flex: 1;
+  width: 100%;
   border: 1px solid #4a90e2;
   border-radius: 5px;
   padding: 0.3rem 0.5rem;
@@ -482,7 +483,13 @@
   box-sizing: border-box;
 }
 
+.add-body-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
 .add-body-confirm {
+  flex: 1;
   padding: 0.3rem 0.6rem;
   background: #4a90e2;
   color: #fff;
@@ -494,7 +501,7 @@
 }
 
 .add-body-cancel {
-  padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   background: none;
   border: 1px solid #ccc;
   border-radius: 5px;
