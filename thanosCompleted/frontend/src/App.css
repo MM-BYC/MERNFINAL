@@ -76,9 +76,23 @@ body {
 }
 
 /* App Brand */
-@keyframes chrome-sweep {
-  0%   { background-position: -150% center; }
-  100% { background-position: 250% center; }
+@keyframes glass-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.95),
+      0 0 18px rgba(200, 225, 255, 0.55),
+      0 0 36px rgba(170, 205, 240, 0.28),
+      2px 4px 10px rgba(80, 120, 165, 0.35),
+      -1px -1px 0 rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 1),
+      0 0 28px rgba(200, 225, 255, 0.72),
+      0 0 55px rgba(170, 205, 240, 0.44),
+      2px 4px 14px rgba(80, 120, 165, 0.45),
+      -1px -1px 0 rgba(255, 255, 255, 0.82);
+  }
 }
 
 .snapnote-brand {
@@ -89,28 +103,18 @@ body {
   margin: 0.5rem 0 1rem;
   display: inline-block;
   background: linear-gradient(
-    105deg,
-    #8ca8c0 0%,
-    #ddeeff 14%,
-    #ffffff 24%,
-    #a0bcd4 38%,
-    #d8eaf8 52%,
-    #ffffff 60%,
-    #8aaabb 74%,
-    #5580a0 87%,
-    #c0d8ee 100%
+    160deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(225, 240, 255, 0.88) 25%,
+    rgba(195, 220, 248, 0.76) 50%,
+    rgba(225, 240, 255, 0.88) 75%,
+    rgba(255, 255, 255, 0.98) 100%
   );
-  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: chrome-sweep 3.5s linear infinite;
-  text-shadow:
-    1px 1px 0 rgba(70, 100, 130, 0.6),
-    2px 2px 0 rgba(55, 82, 110, 0.5),
-    3px 3px 0 rgba(42, 65, 90, 0.4),
-    4px 4px 0 rgba(30, 50, 72, 0.3),
-    5px 5px 12px rgba(0, 20, 50, 0.45);
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.72);
+  animation: glass-glow 3s ease-in-out infinite;
   transition: transform 0.12s ease-out;
   will-change: transform;
   transform-style: preserve-3d;
@@ -1085,21 +1089,17 @@ body {
 
 [data-theme="dark"] .snapnote-brand {
   background: linear-gradient(
-    105deg,
-    #3a5870 0%,
-    #90c0e0 14%,
-    #ddf0ff 24%,
-    #5880a8 38%,
-    #a8d0ee 52%,
-    #ddeeff 60%,
-    #3a6080 74%,
-    #1e3c58 87%,
-    #6898c0 100%
+    160deg,
+    rgba(200, 225, 255, 0.95) 0%,
+    rgba(155, 195, 240, 0.80) 25%,
+    rgba(110, 165, 220, 0.68) 50%,
+    rgba(155, 195, 240, 0.80) 75%,
+    rgba(200, 225, 255, 0.95) 100%
   );
-  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-stroke: 0.5px rgba(180, 215, 255, 0.55);
 }
 
 [data-theme="dark"] .date-day {
