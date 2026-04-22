@@ -3,28 +3,26 @@ import { signUp } from "../utilities/users-service";
 
 export default class SignUpForm extends Component {
   state = {
-    name: "",
+    lastName: "",
+    firstName: "",
     email: "",
     password: "",
     confirm: "",
     error: "",
+    success: "",
   };
 
   handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-      error: "",
-    });
+    this.setState({ [evt.target.name]: evt.target.value, error: "" });
   };
+
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      const formData = { ...this.state };
-      delete formData.error;
-      delete formData.confirm;
-      const user = await signUp(formData);
-      console.log(user);
-      this.props.setUser(user);
+      const { lastName, firstName, email, password } = this.state;
+      const formData = { lastname: lastName, firstname: firstName, email, password };
+      const res = await signUp(formData);
+      this.setState({ success: res.message, lastName: "", firstName: "", email: "", password: "", confirm: "" });
     } catch (error) {
       const msg =
         error.message === "Email already exists"
@@ -37,16 +35,35 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
 
+    if (this.state.success) {
+      return (
+        <div className="auth-card">
+          <h2 className="auth-title">Check Your Email</h2>
+          <p style={{ textAlign: "center", color: "#555" }}>{this.state.success}</p>
+        </div>
+      );
+    }
+
     return (
       <div className="auth-card">
         <h2 className="auth-title">Create Account</h2>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="auth-field">
-            <label>Name</label>
+            <label>Last Name</label>
             <input
               type="text"
-              name="name"
-              value={this.state.name}
+              name="lastName"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="auth-field">
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={this.state.firstName}
               onChange={this.handleChange}
               required
             />
@@ -81,9 +98,7 @@ export default class SignUpForm extends Component {
               required
             />
           </div>
-          {this.state.error && (
-            <p className="auth-error">{this.state.error}</p>
-          )}
+          {this.state.error && <p className="auth-error">{this.state.error}</p>}
           <button className="auth-btn" type="submit" disabled={disable}>
             Sign Up
           </button>

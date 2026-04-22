@@ -24,8 +24,8 @@ export default function LoginForm({ setUser }) {
       // payload of the JSON Web Token (JWT)
       const user = await usersService.login(credentials);
       await setUser(user);
-    } catch {
-      setError("Log In Failed - Try Again");
+    } catch (err) {
+      setError(err.message || "Log In Failed - Try Again");
     }
   }
 
@@ -55,6 +55,9 @@ export default function LoginForm({ setUser }) {
         </div>
         {error && <p className="auth-error">{error}</p>}
         <button className="auth-btn" type="submit">Log In</button>
+        <p style={{ textAlign: "center", marginTop: "1rem" }}>
+          <a href="/forgot-password" className="auth-link">Forgot Password?</a>
+        </p>
       </form>
     </div>
   );

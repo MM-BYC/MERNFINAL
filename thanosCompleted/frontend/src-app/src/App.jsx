@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Index from "./components/Index";
 import AuthPage from "./pages/AuthPage";
-import Profile from "./components/Profile";
-import { getUser } from "./utilities/users-service";
+import { getUser, logOut } from "./utilities/users-service";
 function App() {
   const [user, setUser] = useState(getUser());
   // -------------------------------
@@ -19,6 +18,7 @@ function App() {
     title: "",
     body: "",
   });
+  const [showModal, setShowModal] = useState(false);
   // --------------------[State]
 
   // -------------------------------------[CREATE]
@@ -142,59 +142,93 @@ function App() {
 
   return (
     <div className="App">
-      {user ? <Profile user={user} setUser={setUser} /> : <AuthPage setUser={setUser} />}
+      {!user && <AuthPage setUser={setUser} />}
 
       {user && (
         <>
-          <hr />
-          <h1 className="noteTitle">Notes DashBoard</h1>
-          <div className="formAdmin">
-            <div className="formContainer">
-              <h2> + New Note</h2>
-              <form onSubmit={createNote}>
-                <input
-                  name="title"
-                  value={createForm.title}
-                  onChange={updateCreateFormField}
-                />
-                <input
-                  name="body"
-                  value={createForm.body}
-                  onChange={updateCreateFormField}
-                />
-                <button>CreateNote </button>
-              </form>
-              {updateForm._id && (
-                <>
-                  <h1>Update</h1>
-                  <div className="formAdmin">
-                    <form onSubmit={updateNote}>
-                      <input
-                        name="title"
-                        value={updateForm.title}
-                        placeholder="Enter Title"
-                        onChange={handleUpdateFieldChange}
-                      />
-                      <input
-                        name="body"
-                        value={updateForm.body}
-                        placeholder="Enter Body"
-                        onChange={handleUpdateFieldChange}
-                      />
-                      <button type="submit">Submit</button>
-                    </form>
-                  </div>
-                </>
-              )}
+          <div className="dashboard-header">
+            <div className="dashboard-header-center">
+              <h1 className="dashboard-title">Notes Dashboard</h1>
+              <p className="dashboard-greeting">Welcome, {user.firstname} {user.lastname}</p>
             </div>
-            <hr />
+            <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
           </div>
-          {notes ? (
-            <Index info={notes} deleteFunc={deleteNote} editFunc={toggleUpdate} />
-          ) : (
-            <p>Notes: {notes}</p>
+
+          <div className="dashboard-toolbar">
+            <button className="new-note-btn" onClick={() => setShowModal(true)}>+ New Note</button>
+          </div>
+
+          {showModal && (
+            <div className="modal-overlay" onClick={() => setShowModal(false)}>
+              <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-header">
+                  <h2 className="note-form-title">+ New Note</h2>
+                  <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
+                </div>
+                <form onSubmit={(e) => { createNote(e); setShowModal(false); }}>
+                  <div className="note-field">
+                    <label>Title</label>
+                    <input
+                      name="title"
+                      value={createForm.title}
+                      onChange={updateCreateFormField}
+                      placeholder="Note title"
+                    />
+                  </div>
+                  <div className="note-field">
+                    <label>Body</label>
+                    <input
+                      name="body"
+                      value={createForm.body}
+                      onChange={updateCreateFormField}
+                      placeholder="Note body"
+                    />
+                  </div>
+                  <button className="note-submit-btn" type="submit">Add Note</button>
+                </form>
+              </div>
+            </div>
           )}
-          <hr />
+
+          {updateForm._id && (
+            <div className="modal-overlay" onClick={() => setUpdateForm({ _id: null, title: "", body: "" })}>
+              <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-header">
+                  <h2 className="note-form-title">Edit Note</h2>
+                  <button className="modal-close" onClick={() => setUpdateForm({ _id: null, title: "", body: "" })}>✕</button>
+                </div>
+                <form onSubmit={updateNote}>
+                  <div className="note-field">
+                    <label>Title</label>
+                    <input
+                      name="title"
+                      value={updateForm.title}
+                      placeholder="Enter Title"
+                      onChange={handleUpdateFieldChange}
+                    />
+                  </div>
+                  <div className="note-field">
+                    <label>Body</label>
+                    <input
+                      name="body"
+                      value={updateForm.body}
+                      placeholder="Enter Body"
+                      onChange={handleUpdateFieldChange}
+                    />
+                  </div>
+                  <button className="note-submit-btn" type="submit">Save Changes</button>
+                </form>
+              </div>
+            </div>
+          )}
+
+          <div className="notes-grid">
+            {notes ? (
+              <Index info={notes} deleteFunc={deleteNote} editFunc={toggleUpdate} />
+            ) : (
+              <p>No notes yet.</p>
+            )}
+          </div>
         </>
       )}
     </div>

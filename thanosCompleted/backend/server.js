@@ -45,8 +45,11 @@ app.delete("/notes/:id", notesController.deleteNote);
 // +++++++++++++ {DELETE} ++++++++++++++
 // -------------------------------------------------------[userRoutes]
 app.post('/api/users', usersController.create);
-app.post('api/users/login', usersController.login);
-app.get('api/users/check-token', ensureLoggedIn, usersController.checkToken)
+app.post('/api/users/login', usersController.login);
+app.get('/api/users/check-token', ensureLoggedIn, usersController.checkToken);
+app.get('/api/users/verify/:token', usersController.verifyEmail);
+app.post('/api/users/forgot-password', usersController.forgotPassword);
+app.post('/api/users/reset-password/:token', usersController.resetPassword);
 
 
 // ------->------->-------> Server

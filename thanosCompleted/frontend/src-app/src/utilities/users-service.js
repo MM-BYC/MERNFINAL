@@ -13,9 +13,19 @@ export async function login(credentials) {
 }
 
 export async function signUp(userData) {
-  const token = await usersAPI.signUp(userData);
-  localStorage.setItem("token", token);
-  return getUser();
+  return usersAPI.signUp(userData);
+}
+
+export async function forgotPassword(email) {
+  return usersAPI.forgotPassword(email);
+}
+
+export async function resetPassword(token, password) {
+  return usersAPI.resetPassword(token, password);
+}
+
+export async function verifyEmail(token) {
+  return usersAPI.verifyEmail(token);
 }
 
 export function getToken() {

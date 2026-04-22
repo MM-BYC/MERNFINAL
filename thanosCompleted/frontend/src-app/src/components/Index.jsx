@@ -1,6 +1,6 @@
 import React from "react";
 import Note from "./Note";
-
+ 
 function Index({ info, deleteFunc, editFunc }) {
   return (
     <>
