@@ -29,6 +29,7 @@ app.use(cors({
 
 
 // ------->------->-------> Routes
+app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.get("/notes", ensureLoggedIn, notesController.fetchNotes);
 app.get("/notes/:id", ensureLoggedIn, notesController.fetchNote);
 app.post("/notes", ensureLoggedIn, notesController.createNote);
