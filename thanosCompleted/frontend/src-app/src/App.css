@@ -580,6 +580,19 @@
     box-sizing: border-box;
   }
 
+  .date-day {
+    font-size: 0.75rem;
+  }
+
+  .date-date {
+    font-size: 1rem;
+  }
+
+  .page-date {
+    top: 0.5rem;
+    right: 1rem;
+  }
+
   /* Dashboard header stacks vertically */
   .dashboard-header {
     flex-direction: column;
@@ -632,6 +645,19 @@
 @media (max-width: 480px) {
   #root {
     padding: 0.75rem;
+  }
+
+  .date-day {
+    font-size: 0.65rem;
+  }
+
+  .date-date {
+    font-size: 0.8rem;
+  }
+
+  .page-date {
+    top: 0.25rem;
+    right: 0.75rem;
   }
 
   .dashboard-title {
