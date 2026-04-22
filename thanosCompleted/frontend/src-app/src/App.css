@@ -412,6 +412,11 @@
   color: #888;
 }
 
+.card-tobuy .drag-handle {
+  font-size: 1.45rem;
+  padding: 0 4px;
+}
+
 .draggable-item {
   cursor: default;
 }
