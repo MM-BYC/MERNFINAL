@@ -13,11 +13,6 @@ function App() {
     body: "",
   });
 
-  const [updateForm, setUpdateForm] = useState({
-    _id: null,
-    title: "",
-    body: "",
-  });
   const [showModal, setShowModal] = useState(false);
   // --------------------[State]
 
@@ -70,56 +65,9 @@ function App() {
     // update State
   };
 
-  const handleUpdateFieldChange = (e) => {
-    const { value, name } = e.target;
-    // Destructure Values from event target
-    setUpdateForm(() => ({
-      ...updateForm,
-      [name]: value,
-      //[whatever var name is equal to ]: value is reassigned
-    }));
-  };
-
-  const toggleUpdate = (note) => {
-    // 1. Get the current note (_id) vals
-    console.log("Current Note : ", note);
-    // 2. Set state on update form
-    setUpdateForm({
-      _id: note._id,
-      title: note.title,
-      body: note.body,
-    });
-  };
-
-  const updateNote = async (e) => {
-    e.preventDefault();
-    // Destructure Note
-    const { title, body } = updateForm;
-    // Send the update request by using the updateForm state
-    const res = await axios.put(
-      `/notes/${updateForm._id}`,
-      { title, body }
-    );
-    console.log(res);
-
-    // Update State
-    const newNotes = [...notes];
-
-    const noteIndex = notes.findIndex((note) => {
-      return note._id === updateForm._id;
-      // Find Note by Index in Arr by seeing if they match
-    });
-
-    newNotes[noteIndex] = res.data.note;
-    // reassigning value of Note
-    setNotes(newNotes);
-
-    setUpdateForm({
-      _id: null,
-      title: "",
-      body: "",
-    });
-    // Clear Form so form_reuse
+  const updateNote = async (id, title, body) => {
+    const res = await axios.put(`/notes/${id}`, { title, body });
+    setNotes((prev) => prev.map((n) => (n._id === id ? res.data.note : n)));
   };
   // -------------------------------------[DELETE]
   const deleteNote = async (_id) => {
@@ -190,41 +138,9 @@ function App() {
             </div>
           )}
 
-          {updateForm._id && (
-            <div className="modal-overlay" onClick={() => setUpdateForm({ _id: null, title: "", body: "" })}>
-              <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                  <h2 className="note-form-title">Edit Note</h2>
-                  <button className="modal-close" onClick={() => setUpdateForm({ _id: null, title: "", body: "" })}>✕</button>
-                </div>
-                <form onSubmit={updateNote}>
-                  <div className="note-field">
-                    <label>Title</label>
-                    <input
-                      name="title"
-                      value={updateForm.title}
-                      placeholder="Enter Title"
-                      onChange={handleUpdateFieldChange}
-                    />
-                  </div>
-                  <div className="note-field">
-                    <label>Body</label>
-                    <input
-                      name="body"
-                      value={updateForm.body}
-                      placeholder="Enter Body"
-                      onChange={handleUpdateFieldChange}
-                    />
-                  </div>
-                  <button className="note-submit-btn" type="submit">Save Changes</button>
-                </form>
-              </div>
-            </div>
-          )}
-
           <div className="notes-grid">
             {notes ? (
-              <Index info={notes} deleteFunc={deleteNote} editFunc={toggleUpdate} />
+              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} />
             ) : (
               <p>No notes yet.</p>
             )}

@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note";
 
-function Index({ info, deleteFunc, editFunc }) {
+function Index({ info, deleteFunc, updateFunc }) {
   // Group notes by title
   const groups = {};
   info.forEach((note) => {
@@ -22,7 +22,7 @@ function Index({ info, deleteFunc, editFunc }) {
           title={title}
           items={groups[title]}
           deleteFunc={deleteFunc}
-          editFunc={editFunc}
+          updateFunc={updateFunc}
         />
       ))}
     </>
