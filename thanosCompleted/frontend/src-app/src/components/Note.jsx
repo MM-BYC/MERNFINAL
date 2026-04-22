@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const isToBuy = note.title === "To Buy";
   const isBought = note.title === "Bought";
-  const isDraggableCard = isToBuy || isBought;
+  const isDraggableCard = true;
 
   const [bodies, setBodies] = useState({});
   const [checked, setChecked] = useState({});
