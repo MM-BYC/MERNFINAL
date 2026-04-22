@@ -26,7 +26,7 @@ function App() {
     try {
       e.preventDefault();
       // 1. Create Note
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, createForm);
+      const res = await axios.post('/notes', createForm);
       // 1a.) Add 2nd arg to pass data , {}
       console.log("CreatedNote : ", res);
 
@@ -48,7 +48,7 @@ function App() {
   const fetchNotes = async () => {
     try {
       //  1.Make Request
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/notes`);
+      const response = await axios.get('/notes');
       const info = await response.data;
       // 2. Save as State
       await setNotes(info.notes);
@@ -97,7 +97,7 @@ function App() {
     const { title, body } = updateForm;
     // Send the update request by using the updateForm state
     const res = await axios.put(
-      `${import.meta.env.VITE_API_URL}/notes/${updateForm._id}`,
+      `/notes/${updateForm._id}`,
       { title, body }
     );
     console.log(res);
@@ -124,7 +124,7 @@ function App() {
   // -------------------------------------[DELETE]
   const deleteNote = async (_id) => {
     // 1. Delete Note
-    const res = await axios.delete(`${import.meta.env.VITE_API_URL}/notes/${_id}`);
+    const res = await axios.delete(`/notes/${_id}`);
     console.log(res);
     // 2. UpdateState
 
