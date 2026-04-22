@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(require('./config/checkToken'))
 app.use(cors({
-    origin:true,
+    origin: process.env.CLIENT_URL || true,
     credentials: true
   }))
 // CORS: CrossOriginResourceSharing
@@ -51,6 +51,18 @@ app.get('/api/users/verify/:token', usersController.verifyEmail);
 app.post('/api/users/forgot-password', usersController.forgotPassword);
 app.post('/api/users/reset-password/:token', usersController.resetPassword);
 
+
+// ------->------->-------> Serve React Frontend (Production / Render Deployment)
+// [1] Tells Express to serve all static files (HTML, CSS, JS, images) from React's build folder.
+//     The build folder is created when you run "npm run build" inside the frontend directory.
+app.use(express.static(path.join(__dirname, '../frontend/src-app/build')));
+
+// [2] Catches every route that is NOT an API route (like /notes or /api/users).
+//     Without this, refreshing or directly visiting a React route (e.g. /login) would return a 404.
+//     Instead, Express sends back index.html and lets React Router handle the navigation client-side.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/src-app/build', 'index.html'));
+});
 
 // ------->------->-------> Server
 app.listen(PORT,()=>{
