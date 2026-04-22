@@ -56,4 +56,18 @@ const addBody = async (req, res) => {
   res.json({ note });
 };
 
-module.exports = { fetchNote, fetchNotes, updateNote, createNote, deleteNote, addBody };
+const deleteCheckedBodies = async (req, res) => {
+  const { bodyIds } = req.body;
+  const note = await Note.findOneAndUpdate(
+    { _id: req.params.id, user: req.user._id },
+    { $pull: { bodies: { _id: { $in: bodyIds } } } },
+    { new: true }
+  );
+  if (note && note.bodies.length === 0) {
+    await Note.deleteOne({ _id: req.params.id, user: req.user._id });
+    return res.json({ deleted: true });
+  }
+  res.json({ note });
+};
+
+module.exports = { fetchNote, fetchNotes, updateNote, createNote, deleteNote, addBody, deleteCheckedBodies };

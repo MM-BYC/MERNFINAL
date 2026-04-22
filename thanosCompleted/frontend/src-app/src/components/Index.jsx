@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note";
 
-function Index({ info, deleteFunc, updateFunc, addBodyFunc }) {
+function Index({ info, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) {
   const sorted = [...info].sort((a, b) => a.title.localeCompare(b.title));
 
   return (
@@ -13,6 +13,7 @@ function Index({ info, deleteFunc, updateFunc, addBodyFunc }) {
           deleteFunc={deleteFunc}
           updateFunc={updateFunc}
           addBodyFunc={addBodyFunc}
+          deleteCheckedFunc={deleteCheckedFunc}
         />
       ))}
     </>

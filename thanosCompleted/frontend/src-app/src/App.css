@@ -369,9 +369,15 @@
   transition: background-color 0.2s, color 0.2s;
 }
 
-.card-delete-btn:hover {
+.card-delete-btn:hover:not(:disabled) {
   background-color: #e74c3c;
   color: #fff;
+}
+
+.card-delete-btn:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
 }
 
 /* Body item row */

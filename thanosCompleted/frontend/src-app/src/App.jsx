@@ -116,6 +116,24 @@ function App() {
     setNotes((prev) => prev.map((n) => (n._id === noteId ? res.data.note : n)));
   };
 
+  const deleteCheckedBodies = async (noteId, bodyIds) => {
+    setNotes((prev) => prev.map((n) =>
+      n._id === noteId
+        ? { ...n, bodies: (n.bodies || []).filter(b => !bodyIds.includes(String(b._id))) }
+        : n
+    ).filter(n => n._id !== noteId || (n.bodies || []).length > 0));
+    try {
+      const res = await axios.delete(`/notes/${noteId}/bodies`, { data: { bodyIds } });
+      if (res.data.deleted) {
+        setNotes((prev) => prev.filter(n => n._id !== noteId));
+      } else {
+        setNotes((prev) => prev.map(n => n._id === noteId ? res.data.note : n));
+      }
+    } catch {
+      fetchNotes();
+    }
+  };
+
   const addBodyToNote = async (noteId, text) => {
     const tempId = `temp_${Date.now()}`;
     setNotes((prev) => prev.map((n) =>
@@ -213,7 +231,7 @@ function App() {
 
           <div className="notes-grid">
             {notes ? (
-              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} addBodyFunc={addBodyToNote} />
+              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} addBodyFunc={addBodyToNote} deleteCheckedFunc={deleteCheckedBodies} />
             ) : (
               <p>No notes yet.</p>
             )}

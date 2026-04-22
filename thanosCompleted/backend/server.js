@@ -35,6 +35,7 @@ app.post("/notes", ensureLoggedIn, notesController.createNote);
 app.put("/notes/:id", ensureLoggedIn, notesController.updateNote);
 app.delete("/notes/:id", ensureLoggedIn, notesController.deleteNote);
 app.post("/notes/:id/bodies", ensureLoggedIn, notesController.addBody);
+app.delete("/notes/:id/bodies", ensureLoggedIn, notesController.deleteCheckedBodies);
 // +++++++++++++ {DELETE} ++++++++++++++
 // -------------------------------------------------------[userRoutes]
 app.post('/api/users', usersController.create);

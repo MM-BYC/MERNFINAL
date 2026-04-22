@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Note({ note, deleteFunc, updateFunc, addBodyFunc }) {
+function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) {
   const [bodies, setBodies] = useState({});
   const [checked, setChecked] = useState({});
   const [isDirty, setIsDirty] = useState(false);
@@ -48,7 +48,14 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc }) {
     <div className="container">
       <div className="card-header">
         <h2 className="titler">{note.title}</h2>
-        <button className="card-delete-btn" onClick={() => deleteFunc(note._id)}>
+        <button
+          className="card-delete-btn"
+          disabled={!Object.values(checked).some(Boolean)}
+          onClick={() => {
+            const ids = Object.entries(checked).filter(([, v]) => v).map(([k]) => k);
+            deleteCheckedFunc(note._id, ids);
+          }}
+        >
           Delete
         </button>
       </div>
