@@ -50,13 +50,14 @@
 }
 
 .date-day {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #555;
 }
 
 .date-date {
-  font-size: 0.85rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #333;
 }
 
