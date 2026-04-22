@@ -4,6 +4,7 @@ import axios from "axios";
 import Index from "./components/Index";
 import AuthPage from "./pages/AuthPage";
 import DateDisplay from "./components/DateDisplay";
+import SnapNoteBrand from "./components/SnapNoteBrand";
 import { getUser, logOut, getToken } from "./utilities/users-service";
 
 axios.interceptors.request.use((config) => {
@@ -217,7 +218,7 @@ function App() {
               <button className="theme-toggle" onClick={cycleTheme} title={`Theme: ${theme}`}>
                 {THEME_ICONS[theme]} {theme.charAt(0).toUpperCase() + theme.slice(1)}
               </button>
-              <h1 className="snapnote-brand">SnapNote</h1>
+              <SnapNoteBrand />
             </div>
             <div className="dashboard-header">
               <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>

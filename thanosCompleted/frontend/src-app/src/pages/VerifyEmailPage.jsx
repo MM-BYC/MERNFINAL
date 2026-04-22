@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { verifyEmail } from "../utilities/users-service";
 import "../App.css";
 import DateDisplay from "../components/DateDisplay";
+import SnapNoteBrand from "../components/SnapNoteBrand";
 
 export default function VerifyEmailPage() {
   const { token } = useParams();
@@ -18,7 +19,7 @@ export default function VerifyEmailPage() {
   return (
     <>
     <DateDisplay className="page-date" />
-    <h1 className="snapnote-brand">SnapNote</h1>
+    <SnapNoteBrand scrollParallax />
     <div className="auth-card">
       <h2 className="auth-title">Email Verification</h2>
       <p style={{ textAlign: "center", color: success ? "#4a90e2" : "#d9534f" }}>{message}</p>

@@ -76,13 +76,29 @@ body {
 }
 
 /* App Brand */
+@keyframes snapnote-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
 .snapnote-brand {
   text-align: center;
   font-size: 2.6rem;
   font-weight: 900;
   letter-spacing: 0.04em;
-  color: #1a535c;
   margin: 0.5rem 0 1rem;
+  display: inline-block;
+  background: linear-gradient(90deg, #1a535c 0%, #4ecdc4 40%, #1a7a70 65%, #1a535c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: snapnote-shimmer 5s linear infinite;
+  transition: transform 0.12s ease-out;
+  will-change: transform;
+  transform-style: preserve-3d;
+  cursor: default;
+  user-select: none;
 }
 
 /* Sticky dashboard header */
@@ -981,7 +997,11 @@ body {
 }
 
 [data-theme="dark"] .snapnote-brand {
-  color: #4ecdc4;
+  background: linear-gradient(90deg, #4ecdc4 0%, #88f5ee 40%, #2ab8ae 65%, #4ecdc4 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 [data-theme="dark"] .date-day {

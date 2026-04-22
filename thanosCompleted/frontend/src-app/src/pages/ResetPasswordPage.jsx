@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { resetPassword } from "../utilities/users-service";
 import "../App.css";
 import DateDisplay from "../components/DateDisplay";
+import SnapNoteBrand from "../components/SnapNoteBrand";
 
 export default function ResetPasswordPage() {
   const { token } = useParams();
@@ -27,7 +28,7 @@ export default function ResetPasswordPage() {
   return (
     <>
     <DateDisplay className="page-date" />
-    <h1 className="snapnote-brand">SnapNote</h1>
+    <SnapNoteBrand scrollParallax />
     <div className="auth-card">
       <h2 className="auth-title">Reset Password</h2>
       {message ? (
