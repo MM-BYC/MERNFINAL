@@ -148,6 +148,15 @@
   margin-bottom: 1.2rem;
 }
 
+.modal-drag-handle {
+  cursor: grab;
+  user-select: none;
+}
+
+.modal-drag-handle:active {
+  cursor: grabbing;
+}
+
 .modal-close {
   background: none;
   border: none;

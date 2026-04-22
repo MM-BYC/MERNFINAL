@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Index from "./components/Index";
 import AuthPage from "./pages/AuthPage";
@@ -14,6 +14,19 @@ function App() {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [modalPos, setModalPos] = useState({ x: 0, y: 0 });
+  const dragState = useRef({ dragging: false, startX: 0, startY: 0 });
+
+  useEffect(() => { if (showModal) setModalPos({ x: 0, y: 0 }); }, [showModal]);
+
+  const onDragStart = (clientX, clientY) => {
+    dragState.current = { dragging: true, startX: clientX - modalPos.x, startY: clientY - modalPos.y };
+  };
+  const onDragMove = (clientX, clientY) => {
+    if (!dragState.current.dragging) return;
+    setModalPos({ x: clientX - dragState.current.startX, y: clientY - dragState.current.startY });
+  };
+  const onDragEnd = () => { dragState.current.dragging = false; };
   // --------------------[State]
 
   // -------------------------------------[CREATE]
@@ -103,9 +116,24 @@ function App() {
           </div>
 
           {showModal && (
-            <div className="modal-overlay" onClick={() => setShowModal(false)}>
-              <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
+            <div
+              className="modal-overlay"
+              onClick={() => setShowModal(false)}
+              onMouseMove={(e) => onDragMove(e.clientX, e.clientY)}
+              onMouseUp={onDragEnd}
+              onTouchMove={(e) => onDragMove(e.touches[0].clientX, e.touches[0].clientY)}
+              onTouchEnd={onDragEnd}
+            >
+              <div
+                className="modal-card"
+                style={{ transform: `translate(${modalPos.x}px, ${modalPos.y}px)` }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div
+                  className="modal-header modal-drag-handle"
+                  onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX, e.clientY); }}
+                  onTouchStart={(e) => onDragStart(e.touches[0].clientX, e.touches[0].clientY)}
+                >
                   <h2 className="note-form-title">+ New Note</h2>
                   <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
                 </div>
