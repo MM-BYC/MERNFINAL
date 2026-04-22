@@ -68,3 +68,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+[data-theme="light"] {
+  color-scheme: light;
+  color: #213547;
+  background-color: #f0f2f5;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  color: #e0e0f0;
+  background-color: #0f0f17;
+}
