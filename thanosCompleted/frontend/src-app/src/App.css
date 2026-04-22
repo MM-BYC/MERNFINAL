@@ -417,3 +417,116 @@
 .auth-link:hover {
   text-decoration: underline;
 }
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 768px) {
+  #root {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Dashboard header stacks vertically */
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .dashboard-header-center {
+    position: static;
+    transform: none;
+    text-align: left;
+  }
+
+  .dashboard-title {
+    font-size: 1.3rem;
+  }
+
+  .logout-btn {
+    align-self: flex-end;
+  }
+
+  /* Notes grid: 2 columns on tablet */
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.9rem;
+  }
+
+  /* Modal takes up more screen width */
+  .modal-card {
+    width: calc(100% - 2rem);
+    max-width: 100%;
+    margin: 1rem;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  /* Auth card fits screen */
+  .auth-card {
+    padding: 1.5rem 1.2rem;
+    margin: 1rem auto;
+  }
+
+  .auth-toggle {
+    max-width: 100%;
+    margin: 1rem auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 0.75rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.1rem;
+  }
+
+  .dashboard-greeting {
+    font-size: 0.8rem;
+  }
+
+  /* Notes grid: single column on small phones */
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-card {
+    padding: 1.2rem 1rem;
+    margin: 0.75rem;
+  }
+
+  .auth-card {
+    padding: 1.2rem 1rem;
+    margin: 0.75rem auto;
+    border-radius: 8px;
+  }
+
+  .auth-title {
+    font-size: 1.2rem;
+  }
+
+  .auth-field input {
+    font-size: 16px; /* prevents Safari auto-zoom on input focus */
+  }
+
+  .note-field input {
+    font-size: 16px; /* prevents Safari auto-zoom on input focus */
+  }
+
+  .auth-btn {
+    padding: 0.85rem;
+  }
+
+  .new-note-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dashboard-toolbar {
+    justify-content: center;
+  }
+}
