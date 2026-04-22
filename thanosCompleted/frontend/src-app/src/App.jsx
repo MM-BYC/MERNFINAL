@@ -121,8 +121,6 @@ function App() {
               onClick={() => setShowModal(false)}
               onMouseMove={(e) => onDragMove(e.clientX, e.clientY)}
               onMouseUp={onDragEnd}
-              onTouchMove={(e) => onDragMove(e.touches[0].clientX, e.touches[0].clientY)}
-              onTouchEnd={onDragEnd}
             >
               <div
                 className="modal-card"
@@ -132,7 +130,9 @@ function App() {
                 <div
                   className="modal-header modal-drag-handle"
                   onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX, e.clientY); }}
-                  onTouchStart={(e) => onDragStart(e.touches[0].clientX, e.touches[0].clientY)}
+                  onTouchStart={(e) => { e.preventDefault(); onDragStart(e.touches[0].clientX, e.touches[0].clientY); }}
+                  onTouchMove={(e) => { e.preventDefault(); onDragMove(e.touches[0].clientX, e.touches[0].clientY); }}
+                  onTouchEnd={onDragEnd}
                 >
                   <h2 className="note-form-title">+ New Note</h2>
                   <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
