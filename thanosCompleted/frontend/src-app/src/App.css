@@ -50,13 +50,13 @@
 }
 
 .date-day {
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: #555;
 }
 
 .date-date {
-  font-size: 1.5rem;
+  font-size: 1.53rem;
   font-weight: 700;
   color: #333;
 }
@@ -117,12 +117,12 @@
 
 .dashboard-title {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.632rem;
 }
 
 .dashboard-greeting {
   margin: 0.2rem 0 0;
-  font-size: 0.9rem;
+  font-size: 0.918rem;
   opacity: 0.85;
 }
 
@@ -153,7 +153,7 @@
   color: #e74c3c;
   border: 2px solid #e74c3c;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 0.918rem;
   font-weight: 600;
   cursor: pointer;
   box-sizing: border-box;
@@ -181,7 +181,7 @@
   color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 0.918rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -348,7 +348,7 @@
 }
 
 .titler {
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: #222;
   margin: 0 0 0.5rem;
@@ -367,7 +367,7 @@
 }
 
 .body {
-  font-size: 0.9rem;
+  font-size: 0.918rem;
   color: #555;
   margin: 0;
   flex: 1;
@@ -388,7 +388,7 @@
   border: 1.5px solid #e74c3c;
   color: #e74c3c;
   border-radius: 5px;
-  font-size: 0.78rem;
+  font-size: 0.796rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
@@ -408,7 +408,7 @@
 /* Drag and drop */
 .drag-handle {
   flex-shrink: 0;
-  font-size: 1rem;
+  font-size: 1.02rem;
   color: #bbb;
   cursor: grab;
   user-select: none;
@@ -422,7 +422,7 @@
 }
 
 .card-tobuy .drag-handle {
-  font-size: 1.45rem;
+  font-size: 1.479rem;
   padding: 0 4px;
 }
 
@@ -461,7 +461,7 @@
   border-radius: 3px;
   background: #fff;
   color: #000;
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 900;
   cursor: pointer;
   display: flex;
@@ -481,7 +481,7 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 0.945rem;
+  font-size: 0.964rem;
   color: #555;
   font-family: inherit;
   padding: 0.1rem 0.2rem;
@@ -510,7 +510,7 @@
   border: 1px dashed #4a90e2;
   border-radius: 5px;
   color: #4a90e2;
-  font-size: 0.8rem;
+  font-size: 0.816rem;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -531,7 +531,7 @@
   border: 1px solid #4a90e2;
   border-radius: 5px;
   padding: 0.3rem 0.5rem;
-  font-size: 0.85rem;
+  font-size: 0.867rem;
   outline: none;
   box-sizing: border-box;
 }
@@ -548,7 +548,7 @@
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 0.82rem;
+  font-size: 0.836rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -558,7 +558,7 @@
   background: none;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 0.82rem;
+  font-size: 0.836rem;
   cursor: pointer;
   color: #888;
 }
@@ -576,7 +576,7 @@
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 0.82rem;
+  font-size: 0.836rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -729,11 +729,11 @@
   }
 
   .date-day {
-    font-size: 0.75rem;
+    font-size: 0.765rem;
   }
 
   .date-date {
-    font-size: 1rem;
+    font-size: 1.02rem;
   }
 
   .page-date {
@@ -756,7 +756,7 @@
   }
 
   .dashboard-title {
-    font-size: 1.3rem;
+    font-size: 1.326rem;
   }
 
   .logout-btn {
@@ -796,11 +796,11 @@
   }
 
   .date-day {
-    font-size: 0.65rem;
+    font-size: 0.663rem;
   }
 
   .date-date {
-    font-size: 0.8rem;
+    font-size: 0.816rem;
   }
 
   .page-date {
@@ -809,11 +809,11 @@
   }
 
   .dashboard-title {
-    font-size: 1.1rem;
+    font-size: 1.122rem;
   }
 
   .dashboard-greeting {
-    font-size: 0.8rem;
+    font-size: 0.816rem;
   }
 
   /* Notes grid: single column on small phones */
@@ -884,7 +884,7 @@
   border: 1.5px solid #ccc;
   border-radius: 20px;
   background: transparent;
-  font-size: 0.78rem;
+  font-size: 0.796rem;
   font-weight: 600;
   color: #555;
   cursor: pointer;
