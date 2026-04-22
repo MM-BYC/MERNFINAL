@@ -125,18 +125,20 @@
 }
 
 .brand-row {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  position: relative;
 }
 
 .brand-row .snapnote-brand {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  grid-column: 2;
   text-align: center;
   margin: 0.5rem 0;
+}
+
+.brand-row .date-display {
+  grid-column: 3;
+  justify-self: end;
 }
 
 .logout-btn {
