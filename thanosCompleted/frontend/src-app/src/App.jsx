@@ -219,14 +219,14 @@ function App() {
                 {THEME_ICONS[theme]} {theme.charAt(0).toUpperCase() + theme.slice(1)}
               </button>
               <h1 className="snapnote-brand">SnapNote</h1>
-              <DateDisplay />
             </div>
             <div className="dashboard-header">
+              <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
               <div className="dashboard-header-center">
-                <h1 className="dashboard-title">Notes Dashboard</h1>
+                <h1 className="dashboard-title">Dashboard</h1>
                 <p className="dashboard-greeting">Welcome, {user.firstname} {user.lastname}</p>
               </div>
-              <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
+              <DateDisplay className="dashboard-date" />
             </div>
 
             <div className="dashboard-toolbar">
