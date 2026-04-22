@@ -124,6 +124,7 @@ function App() {
 
       {user && (
         <>
+          <h1 className="snapnote-brand">SnapNote</h1>
           <div className="dashboard-header">
             <div className="dashboard-header-center">
               <h1 className="dashboard-title">Notes Dashboard</h1>

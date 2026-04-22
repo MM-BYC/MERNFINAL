@@ -6,6 +6,7 @@ export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(false);
   return (
     <>
+      <h1 className="snapnote-brand">SnapNote</h1>
       <div className="auth-toggle">
         <button
           className={`auth-toggle-btn ${!showLogin ? "active" : ""}`}

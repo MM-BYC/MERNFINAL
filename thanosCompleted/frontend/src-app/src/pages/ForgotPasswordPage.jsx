@@ -19,6 +19,8 @@ export default function ForgotPasswordPage() {
   }
 
   return (
+    <>
+      <h1 className="snapnote-brand">SnapNote</h1>
     <div className="auth-card">
       <h2 className="auth-title">Forgot Password</h2>
       {message ? (
@@ -42,5 +44,6 @@ export default function ForgotPasswordPage() {
         <a href="/" className="auth-link">Back to Login</a>
       </p>
     </div>
+    </>
   );
 }
