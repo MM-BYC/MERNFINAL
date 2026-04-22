@@ -126,13 +126,17 @@
 
 .brand-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  position: relative;
 }
 
 .brand-row .snapnote-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
   margin: 0.5rem 0;
-  text-align: left;
 }
 
 .logout-btn {
