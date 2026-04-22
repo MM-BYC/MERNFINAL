@@ -4,7 +4,13 @@ import axios from "axios";
 import Index from "./components/Index";
 import AuthPage from "./pages/AuthPage";
 import DateDisplay from "./components/DateDisplay";
-import { getUser, logOut } from "./utilities/users-service";
+import { getUser, logOut, getToken } from "./utilities/users-service";
+
+axios.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 function App() {
   const [user, setUser] = useState(getUser());
   // -------------------------------
