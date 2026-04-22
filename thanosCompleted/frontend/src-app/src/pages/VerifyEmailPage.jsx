@@ -4,6 +4,7 @@ import { verifyEmail } from "../utilities/users-service";
 import "../App.css";
 import DateDisplay from "../components/DateDisplay";
 import SnapNoteBrand from "../components/SnapNoteBrand";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function VerifyEmailPage() {
   const { token } = useParams();
@@ -18,6 +19,7 @@ export default function VerifyEmailPage() {
 
   return (
     <>
+    <div className="page-theme-toggle"><ThemeToggle /></div>
     <DateDisplay className="page-date" />
     <SnapNoteBrand scrollParallax />
     <div className="auth-card">

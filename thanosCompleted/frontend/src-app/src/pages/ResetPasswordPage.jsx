@@ -4,6 +4,7 @@ import { resetPassword } from "../utilities/users-service";
 import "../App.css";
 import DateDisplay from "../components/DateDisplay";
 import SnapNoteBrand from "../components/SnapNoteBrand";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function ResetPasswordPage() {
   const { token } = useParams();
@@ -27,6 +28,7 @@ export default function ResetPasswordPage() {
 
   return (
     <>
+    <div className="page-theme-toggle"><ThemeToggle /></div>
     <DateDisplay className="page-date" />
     <SnapNoteBrand scrollParallax />
     <div className="auth-card">

@@ -1010,9 +1010,20 @@ body {
 }
 
 /* ===================== THEME TOGGLE ===================== */
-.theme-toggle {
+.brand-row .theme-toggle {
   grid-column: 1;
   justify-self: start;
+}
+
+/* Positioned container for standalone pages */
+.page-theme-toggle {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  z-index: 10;
+}
+
+.theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
