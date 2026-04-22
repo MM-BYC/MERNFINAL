@@ -843,3 +843,18 @@
     justify-content: center;
   }
 }
+
+/* Portrait phones and tablets — To Buy and Bought always stacked at top */
+@media (orientation: portrait) and (max-width: 768px) {
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-tobuy {
+    order: -2;
+  }
+
+  .card-bought {
+    order: -1;
+  }
+}

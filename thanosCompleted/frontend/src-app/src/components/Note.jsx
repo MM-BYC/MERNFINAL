@@ -83,7 +83,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
 
   return (
     <div
-      className={`container${addingBody ? " is-adding" : ""}${dragOver && isDraggableCard ? " drag-over" : ""}`}
+      className={`container${isToBuy ? " card-tobuy" : ""}${isBought ? " card-bought" : ""}${addingBody ? " is-adding" : ""}${dragOver && isDraggableCard ? " drag-over" : ""}`}
       onDragOver={isDraggableCard ? handleDragOver : undefined}
       onDragLeave={isDraggableCard ? handleDragLeave : undefined}
       onDrop={isDraggableCard ? handleDrop : undefined}
