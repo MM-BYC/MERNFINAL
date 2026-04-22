@@ -227,6 +227,8 @@
   justify-content: center;
   touch-action: manipulation;
   line-height: 1;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .modal-close:hover,

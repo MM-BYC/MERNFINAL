@@ -159,7 +159,9 @@ function App() {
                   onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX, e.clientY); }}
                 >
                   <h2 className="note-form-title">+ New Note</h2>
-                  <button className="modal-close" onClick={() => setShowModal(false)}>X</button>
+                  <button className="modal-close" type="button" onClick={() => setShowModal(false)}>
+                    <span style={{ pointerEvents: 'none' }}>X</span>
+                  </button>
                 </div>
                 <form onSubmit={async (e) => { await createNote(e); setShowModal(false); }}>
                   <div className="note-field">
