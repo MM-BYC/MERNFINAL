@@ -154,7 +154,7 @@ function App() {
                   onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX, e.clientY); }}
                 >
                   <h2 className="note-form-title">+ New Note</h2>
-                  <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
+                  <button className="modal-close" onClick={() => setShowModal(false)}>X</button>
                 </div>
                 <form onSubmit={async (e) => { await createNote(e); setShowModal(false); }}>
                   <div className="note-field">

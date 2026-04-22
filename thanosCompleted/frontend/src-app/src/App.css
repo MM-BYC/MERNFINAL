@@ -164,18 +164,28 @@
 }
 
 .modal-close {
-  background: none;
+  background: #6b6b6b;
   border: none;
-  font-size: 1.1rem;
+  font-size: 2.2rem;
+  font-weight: 900;
   cursor: pointer;
-  color: #888;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  transition: color 0.2s;
+  color: #e74c3c;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+  min-width: 48px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  line-height: 1;
 }
 
-.modal-close:hover {
-  color: #333;
+.modal-close:hover,
+.modal-close:active {
+  background-color: #4a4a4a;
+  color: #ff1a1a;
 }
 
 /* Note Form */
