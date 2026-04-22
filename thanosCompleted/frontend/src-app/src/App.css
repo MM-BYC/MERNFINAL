@@ -118,10 +118,14 @@ body {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  background: #1a535c;
+  background: rgba(20, 72, 82, 0.62);
+  backdrop-filter: blur(28px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.08);
+  border: 1px solid rgba(78, 205, 196, 0.28);
+  box-shadow: 0 6px 32px rgba(20, 72, 82, 0.22), inset 0 1px 0 rgba(78,205,196,0.2);
   color: #fff;
   padding: 1.2rem 2rem;
-  border-radius: 10px;
+  border-radius: 16px;
   margin-bottom: 1rem;
 }
 
@@ -233,7 +237,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(10, 20, 40, 0.38);
+  backdrop-filter: blur(6px) saturate(140%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -285,7 +291,7 @@ body {
   font-size: 2.2rem;
   font-weight: 900;
   cursor: pointer;
-  color: rgba(200, 50, 10, 0.9);
+  color: rgba(0, 0, 0, 0.85);
   padding: 0;
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(255, 87, 34, 0.25), inset 0 1px 0 rgba(255,255,255,0.4);
@@ -307,7 +313,7 @@ body {
 .modal-close:active {
   background: rgba(255, 87, 34, 0.38);
   box-shadow: 0 6px 24px rgba(255, 87, 34, 0.4), inset 0 1px 0 rgba(255,255,255,0.5);
-  color: #c0300a;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Note Form */
@@ -331,20 +337,25 @@ body {
 }
 
 .note-field input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
   padding: 0.55rem 0.75rem;
   font-size: 0.95rem;
-  color: #000;
-  background: #fff;
+  color: #1a2a35;
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   outline: none;
-  transition: border-color 0.2s;
+  box-shadow: inset 0 2px 6px rgba(100,140,180,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
   box-sizing: border-box;
   width: 100%;
 }
 
 .note-field input:focus {
-  border-color: #4a90e2;
+  border-color: rgba(74, 144, 226, 0.6);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .note-submit-btn {
@@ -436,25 +447,30 @@ body {
 .card-delete-btn {
   flex-shrink: 0;
   padding: 0.25rem 0.7rem;
-  background: none;
-  border: 1.5px solid #e74c3c;
-  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1.5px solid rgba(231, 76, 60, 0.35);
+  color: #c0392b;
   border-radius: 5px;
   font-size: 0.796rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .card-delete-btn:hover:not(:disabled) {
-  background-color: #e74c3c;
-  color: #fff;
+  background: rgba(231, 76, 60, 0.25);
+  box-shadow: 0 3px 12px rgba(231, 76, 60, 0.22), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .card-delete-btn:disabled {
-  border-color: #ccc;
-  color: #ccc;
+  background: rgba(200, 200, 210, 0.08);
+  border-color: rgba(200, 200, 210, 0.25);
+  color: #bbb;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 /* Drag and drop */
@@ -487,8 +503,9 @@ body {
 }
 
 .container.drag-over {
-  border: 2px dashed #4a90e2;
-  background: #f0f7ff;
+  border: 2px solid rgba(74, 144, 226, 0.55);
+  background: rgba(74, 144, 226, 0.12);
+  box-shadow: 0 0 0 4px rgba(74,144,226,0.1), 0 4px 24px rgba(74,144,226,0.18), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* Body item row */
@@ -507,24 +524,29 @@ body {
 /* Checkbox toggle */
 .check-box {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid #ccc;
-  border-radius: 3px;
-  background: #fff;
-  color: #000;
-  font-size: 1.02rem;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid rgba(180, 180, 210, 0.55);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  color: #1a535c;
+  font-size: 0.9rem;
   font-weight: 900;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  transition: border-color 0.15s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 4px rgba(0,0,0,0.06);
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 
 .check-box.checked {
-  border-color: #e74c3c;
+  background: rgba(26, 83, 92, 0.18);
+  border-color: rgba(26, 83, 92, 0.55);
+  box-shadow: 0 2px 8px rgba(26,83,92,0.18), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 /* Inline editable body input */
@@ -585,12 +607,24 @@ body {
 
 .add-body-input {
   width: 100%;
-  border: 1px solid #4a90e2;
-  border-radius: 5px;
+  border: 1px solid rgba(74, 144, 226, 0.4);
+  border-radius: 6px;
   padding: 0.3rem 0.5rem;
   font-size: 0.867rem;
   outline: none;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  color: #1a2a35;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 2px 5px rgba(100,140,180,0.07);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.add-body-input:focus {
+  border-color: rgba(74, 144, 226, 0.65);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .add-body-actions {
@@ -646,23 +680,30 @@ body {
 
 .save-btn {
   padding: 0.3rem 0.9rem;
-  background-color: #4a90e2;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+  background: rgba(26, 83, 92, 0.28);
+  backdrop-filter: blur(20px) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(200%) brightness(1.05);
+  color: #0e4a52;
+  border: 1.5px solid rgba(26, 83, 92, 0.45);
+  border-radius: 6px;
   font-size: 0.836rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
+  box-shadow: 0 3px 12px rgba(26,83,92,0.18), inset 0 1px 0 rgba(255,255,255,0.45);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .save-btn:hover:not(:disabled) {
-  background-color: #357abd;
+  background: rgba(26, 83, 92, 0.42);
+  box-shadow: 0 5px 18px rgba(26,83,92,0.3), inset 0 1px 0 rgba(255,255,255,0.5);
 }
 
 .save-btn:disabled {
-  background-color: #aac4e8;
+  background: rgba(180, 200, 210, 0.15);
+  border-color: rgba(180, 200, 210, 0.3);
+  color: #9ab0b5;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 /* Auth Toggle */
@@ -745,18 +786,25 @@ body {
 }
 
 .auth-field input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
   padding: 0.6rem 0.75rem;
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.2s;
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  color: #1a2a35;
+  box-shadow: inset 0 2px 6px rgba(100,140,180,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
 .auth-field input:focus {
-  border-color: #4a90e2;
+  border-color: rgba(74, 144, 226, 0.6);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .auth-btn {
@@ -969,20 +1017,25 @@ body {
   align-items: center;
   gap: 0.3rem;
   padding: 0.28rem 0.75rem;
-  border: 1.5px solid #ccc;
+  border: 1.5px solid rgba(180, 190, 210, 0.5);
   border-radius: 20px;
-  background: transparent;
+  background: rgba(200, 205, 220, 0.22);
+  backdrop-filter: blur(20px) saturate(160%) brightness(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(160%) brightness(1.05);
   font-size: 0.796rem;
   font-weight: 600;
-  color: #555;
+  color: #3a4a5a;
   cursor: pointer;
   min-width: 90px;
-  transition: border-color 0.2s, color 0.2s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 8px rgba(100,120,160,0.08);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
 .theme-toggle:hover {
-  border-color: #1a535c;
+  background: rgba(200, 205, 220, 0.4);
+  border-color: rgba(26, 83, 92, 0.45);
   color: #1a535c;
+  box-shadow: 0 4px 14px rgba(26,83,92,0.14), inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 /* ===================== DARK MODE ===================== */
@@ -1029,24 +1082,85 @@ body {
 }
 
 [data-theme="dark"] .theme-toggle {
-  border-color: #333355;
+  background: rgba(30, 30, 55, 0.45);
+  border-color: rgba(80, 80, 130, 0.4);
   color: #8080a8;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 [data-theme="dark"] .theme-toggle:hover {
-  border-color: #4ecdc4;
+  background: rgba(40, 40, 75, 0.6);
+  border-color: rgba(78, 205, 196, 0.5);
   color: #4ecdc4;
+  box-shadow: 0 4px 14px rgba(78,205,196,0.12), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+[data-theme="dark"] .dashboard-header {
+  background: rgba(12, 42, 48, 0.72);
+  border-color: rgba(78, 205, 196, 0.2);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(78,205,196,0.12);
 }
 
 [data-theme="dark"] .container {
-  background: rgba(26, 26, 48, 0.55);
+  background: rgba(22, 22, 44, 0.58);
   border-color: rgba(80, 80, 120, 0.3);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 [data-theme="dark"] .container.drag-over {
-  background: #1c2a40;
-  border-color: #4a90e2;
+  background: rgba(30, 50, 80, 0.55);
+  border-color: rgba(74, 144, 226, 0.5);
+  box-shadow: 0 0 0 4px rgba(74,144,226,0.08), 0 4px 24px rgba(74,144,226,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .card-delete-btn {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: rgba(231, 76, 60, 0.35);
+  color: #e07060;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .card-delete-btn:hover:not(:disabled) {
+  background: rgba(231, 76, 60, 0.25);
+  box-shadow: 0 3px 12px rgba(231,76,60,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .card-delete-btn:disabled {
+  background: rgba(40, 40, 60, 0.2);
+  border-color: rgba(60, 60, 80, 0.3);
+  color: #3a3a55;
+}
+
+[data-theme="dark"] .check-box {
+  background: rgba(30, 30, 55, 0.5);
+  border-color: rgba(80, 80, 130, 0.45);
+  color: #4ecdc4;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 4px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .check-box.checked {
+  background: rgba(26, 83, 92, 0.3);
+  border-color: rgba(78, 205, 196, 0.55);
+  box-shadow: 0 2px 8px rgba(78,205,196,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .save-btn {
+  background: rgba(20, 65, 74, 0.38);
+  border-color: rgba(78, 205, 196, 0.35);
+  color: #4ecdc4;
+  box-shadow: 0 3px 12px rgba(78,205,196,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .save-btn:hover:not(:disabled) {
+  background: rgba(20, 65, 74, 0.55);
+  box-shadow: 0 5px 18px rgba(78,205,196,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
+  color: #7eeee8;
+}
+
+[data-theme="dark"] .save-btn:disabled {
+  background: rgba(25, 35, 45, 0.3);
+  border-color: rgba(50, 70, 80, 0.3);
+  color: #2a4048;
 }
 
 [data-theme="dark"] .titler {
@@ -1071,46 +1185,17 @@ body {
   border-bottom-color: #4a90e2;
 }
 
-[data-theme="dark"] .check-box {
-  background: #222235;
-  border-color: #3a3a55;
-  color: #d0d0e8;
-}
-
-[data-theme="dark"] .check-box.checked {
-  border-color: #e74c3c;
-}
-
-[data-theme="dark"] .card-delete-btn {
-  background: transparent;
-  border-color: #e74c3c;
-  color: #e74c3c;
-}
-
-[data-theme="dark"] .card-delete-btn:disabled {
-  border-color: #333;
-  color: #444;
-}
-
-[data-theme="dark"] .add-body-btn {
-  border-color: #4a90e2;
-  color: #4a90e2;
-}
-
-[data-theme="dark"] .add-body-btn:hover {
-  background-color: #182030;
-}
-
 [data-theme="dark"] .add-body-input {
-  background: #222235;
-  border-color: #4a90e2;
-  color: #d0d0e8;
+  background: rgba(20, 20, 42, 0.6);
+  border-color: rgba(74, 144, 226, 0.35);
+  color: #a0b8d0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 2px 6px rgba(0,0,0,0.2);
 }
 
-[data-theme="dark"] .add-body-cancel {
-  border-color: #3a3a55;
-  color: #6060a0;
-  background: transparent;
+[data-theme="dark"] .add-body-input:focus {
+  border-color: rgba(74, 144, 226, 0.6);
+  background: rgba(25, 25, 50, 0.75);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 [data-theme="dark"] .drag-handle {
@@ -1145,9 +1230,16 @@ body {
 }
 
 [data-theme="dark"] .note-field input {
-  background: #222235;
-  border-color: #3a3a55;
-  color: #d0d0e8;
+  background: rgba(20, 20, 42, 0.6);
+  border-color: rgba(80, 80, 130, 0.4);
+  color: #b0b8d0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 2px 6px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .note-field input:focus {
+  border-color: rgba(74, 144, 226, 0.55);
+  background: rgba(25, 25, 50, 0.75);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 [data-theme="dark"] .auth-card {
@@ -1165,9 +1257,16 @@ body {
 }
 
 [data-theme="dark"] .auth-field input {
-  background: #222235;
-  border-color: #3a3a55;
-  color: #d0d0e8;
+  background: rgba(20, 20, 42, 0.6);
+  border-color: rgba(80, 80, 130, 0.4);
+  color: #b0b8d0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 2px 6px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .auth-field input:focus {
+  border-color: rgba(74, 144, 226, 0.55);
+  background: rgba(25, 25, 50, 0.75);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 [data-theme="dark"] .auth-toggle-btn {
