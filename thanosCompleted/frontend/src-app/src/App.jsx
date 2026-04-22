@@ -25,9 +25,19 @@ function App() {
       // 1a.) Add 2nd arg to pass data , {}
       console.log("CreatedNote : ", res);
 
-      // 2. Update State
-      setNotes(() => [res.data.note, ...notes]);
-      // adds note to notes array in state.
+      // 2. Update State — insert next to existing notes with same title so
+      //    Index.jsx groups them into the existing card without a flash
+      setNotes((prev) => {
+        const titleExists = prev.some((n) => n.title === res.data.note.title);
+        if (titleExists) {
+          // append after the last note with the same title
+          const idx = prev.map((n) => n.title).lastIndexOf(res.data.note.title);
+          const updated = [...prev];
+          updated.splice(idx + 1, 0, res.data.note);
+          return updated;
+        }
+        return [...prev, res.data.note];
+      });
       // ------------------------------------------
       // Clear Form state
       setCreateForm(() => ({
@@ -113,7 +123,7 @@ function App() {
                   <h2 className="note-form-title">+ New Note</h2>
                   <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
                 </div>
-                <form onSubmit={(e) => { createNote(e); setShowModal(false); }}>
+                <form onSubmit={async (e) => { await createNote(e); setShowModal(false); }}>
                   <div className="note-field">
                     <label>Title</label>
                     <input
