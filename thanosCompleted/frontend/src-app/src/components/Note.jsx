@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) {
-  const isToBuy = note.title === "To Buy";
   const [bodies, setBodies] = useState({});
   const [checked, setChecked] = useState({});
   const [isDirty, setIsDirty] = useState(false);
@@ -64,10 +63,10 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) 
       {(note.bodies || []).map((b) => (
         <div key={b._id} className="note-body-item">
           <button
-            className={`check-box${checked[b._id] ? " checked" : ""}${checked[b._id] && isToBuy ? " tobuy" : ""}`}
+            className={`check-box${checked[b._id] ? " checked" : ""}`}
             onClick={() => toggleChecked(b._id)}
           >
-            {checked[b._id] ? (isToBuy ? "✓" : "X") : ""}
+            {checked[b._id] ? "X" : ""}
           </button>
           <input
             className={`body-editable${checked[b._id] ? " body-checked" : ""}`}

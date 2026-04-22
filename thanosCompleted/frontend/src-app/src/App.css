@@ -427,11 +427,6 @@
   border-color: #e74c3c;
 }
 
-.check-box.checked.tobuy {
-  border-color: #27ae60;
-  color: #27ae60;
-}
-
 /* Inline editable body input */
 .body-editable {
   flex: 1;
