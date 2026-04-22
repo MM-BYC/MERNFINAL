@@ -338,10 +338,6 @@
   z-index: 10;
 }
 
-.titler-tobuy {
-  color: #e74c3c;
-}
-
 .titler {
   font-size: 1rem;
   font-weight: 700;
@@ -349,6 +345,11 @@
   margin: 0 0 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1.5px dashed #ccc;
+}
+
+.titler-tobuy {
+  color: #e74c3c;
+  font-weight: 900;
 }
 
 .body {
