@@ -15,6 +15,8 @@ export default function VerifyEmailPage() {
   }, [token]);
 
   return (
+    <>
+    <h1 className="snapnote-brand">SnapNote</h1>
     <div className="auth-card">
       <h2 className="auth-title">Email Verification</h2>
       <p style={{ textAlign: "center", color: success ? "#4a90e2" : "#d9534f" }}>{message}</p>
@@ -24,5 +26,6 @@ export default function VerifyEmailPage() {
         </a>
       )}
     </div>
+    </>
   );
 }

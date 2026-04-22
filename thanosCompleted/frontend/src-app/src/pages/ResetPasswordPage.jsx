@@ -24,6 +24,8 @@ export default function ResetPasswordPage() {
   }
 
   return (
+    <>
+    <h1 className="snapnote-brand">SnapNote</h1>
     <div className="auth-card">
       <h2 className="auth-title">Reset Password</h2>
       {message ? (
@@ -60,5 +62,6 @@ export default function ResetPasswordPage() {
         </form>
       )}
     </div>
+    </>
   );
 }

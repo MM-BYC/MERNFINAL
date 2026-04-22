@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: snapnote
+    runtime: node
+    rootDir: thanosCompleted
+    buildCommand: cd frontend/src-app && npm install && npm run build && cd ../../backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_URL
+        sync: false
+      - key: SECRET
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: SENDGRID_FROM
+        sync: false
+      - key: CLIENT_URL
+        sync: false
