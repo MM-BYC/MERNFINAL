@@ -121,11 +121,11 @@ function App() {
       n._id === noteId
         ? { ...n, bodies: (n.bodies || []).filter(b => !bodyIds.includes(String(b._id))) }
         : n
-    ).filter(n => n._id !== noteId || (n.bodies || []).length > 0 || n.title === "To Buy"));
+    ).filter(n => n._id !== noteId || (n.bodies || []).length > 0 || n.title === "To Buy" || n.title === "Bought"));
     try {
       const res = await axios.delete(`/notes/${noteId}/bodies`, { data: { bodyIds } });
       if (res.data.deleted) {
-        setNotes((prev) => prev.filter(n => n._id !== noteId));
+        setNotes((prev) => prev.filter(n => n._id !== noteId && n.title !== "To Buy" && n.title !== "Bought"));
       } else {
         setNotes((prev) => prev.map(n => n._id === noteId ? res.data.note : n));
       }
