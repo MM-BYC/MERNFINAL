@@ -2,25 +2,14 @@ import React from "react";
 import Note from "./Note";
 
 function Index({ info, deleteFunc, updateFunc }) {
-  // Group notes by title
-  const groups = {};
-  info.forEach((note) => {
-    if (!groups[note.title]) groups[note.title] = [];
-    groups[note.title].push(note);
-  });
-
-  // Sort titles A → Z
-  const sortedTitles = Object.keys(groups).sort((a, b) =>
-    a.localeCompare(b)
-  );
+  const sorted = [...info].sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <>
-      {sortedTitles.map((title) => (
+      {sorted.map((note) => (
         <Note
-          key={title}
-          title={title}
-          items={groups[title]}
+          key={note._id}
+          note={note}
           deleteFunc={deleteFunc}
           updateFunc={updateFunc}
         />

@@ -25,16 +25,11 @@ function App() {
       // 1a.) Add 2nd arg to pass data , {}
       console.log("CreatedNote : ", res);
 
-      // 2. Update State — insert next to existing notes with same title so
-      //    Index.jsx groups them into the existing card without a flash
+      // 2. Update State — replace existing card or add new one
       setNotes((prev) => {
-        const titleExists = prev.some((n) => n.title === res.data.note.title);
-        if (titleExists) {
-          // append after the last note with the same title
-          const idx = prev.map((n) => n.title).lastIndexOf(res.data.note.title);
-          const updated = [...prev];
-          updated.splice(idx + 1, 0, res.data.note);
-          return updated;
+        const exists = prev.find((n) => n._id === res.data.note._id);
+        if (exists) {
+          return prev.map((n) => n._id === res.data.note._id ? res.data.note : n);
         }
         return [...prev, res.data.note];
       });
@@ -75,23 +70,14 @@ function App() {
     // update State
   };
 
-  const updateNote = async (id, title, body) => {
-    const res = await axios.put(`/notes/${id}`, { title, body });
-    setNotes((prev) => prev.map((n) => (n._id === id ? res.data.note : n)));
+  const updateNote = async (noteId, bodyId, text) => {
+    const res = await axios.put(`/notes/${noteId}`, { bodyId, text });
+    setNotes((prev) => prev.map((n) => (n._id === noteId ? res.data.note : n)));
   };
   // -------------------------------------[DELETE]
   const deleteNote = async (_id) => {
-    // 1. Delete Note
-    const res = await axios.delete(`/notes/${_id}`);
-    console.log(res);
-    // 2. UpdateState
-
-    const newNotes = [...notes].filter((note) => {
-      return note._id !== _id;
-      // return all notes EXCEPT this one with :current _id
-    });
-    setNotes(newNotes);
-    // update Notes in state
+    await axios.delete(`/notes/${_id}`);
+    setNotes((prev) => prev.filter((n) => n._id !== _id));
   };
   // ----------------------------------------{{useEffect}}
   useEffect(() => {
