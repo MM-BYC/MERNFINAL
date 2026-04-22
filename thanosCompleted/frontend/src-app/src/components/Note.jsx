@@ -108,6 +108,8 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
           className={`note-body-item${isDraggableCard ? " draggable-item" : ""}`}
           draggable={isDraggableCard}
           onDragStart={isDraggableCard ? (e) => handleDragStart(e, b) : undefined}
+          onDragOver={isDraggableCard ? handleDragOver : undefined}
+          onDrop={isDraggableCard ? handleDrop : undefined}
         >
           {isDraggableCard && <span className="drag-handle">⠿</span>}
           <button

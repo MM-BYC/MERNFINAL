@@ -183,15 +183,14 @@ function App() {
       return n;
     }));
     try {
-      const [addRes, delRes] = await Promise.all([
-        axios.post(`/notes/${destNoteId}/bodies`, { text }),
-        axios.delete(`/notes/${srcNoteId}/bodies`, { data: { bodyIds: [bodyId] } }),
-      ]);
-      setNotes((prev) => prev.map((n) => {
-        if (n._id === destNoteId) return addRes.data.note;
-        if (n._id === srcNoteId) return delRes.data.deleted ? n : delRes.data.note;
-        return n;
-      }));
+      const addRes = await axios.post(`/notes/${destNoteId}/bodies`, { text });
+      setNotes((prev) => prev.map((n) => n._id === destNoteId ? addRes.data.note : n));
+      const delRes = await axios.delete(`/notes/${srcNoteId}/bodies`, { data: { bodyIds: [bodyId] } });
+      if (delRes.data.deleted) {
+        setNotes((prev) => prev.filter((n) => n._id !== srcNoteId));
+      } else {
+        setNotes((prev) => prev.map((n) => n._id === srcNoteId ? delRes.data.note : n));
+      }
     } catch {
       fetchNotes();
     }
