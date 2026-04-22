@@ -102,7 +102,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
         </button>
       </div>
 
-      {(note.bodies || []).map((b) => (
+      {[...(note.bodies || [])].sort((a, b) => (bodies[a._id] ?? a.text).localeCompare(bodies[b._id] ?? b.text)).map((b) => (
         <div
           key={b._id}
           className={`note-body-item${isDraggableCard ? " draggable-item" : ""}`}
