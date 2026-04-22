@@ -1,10 +1,12 @@
 import React from "react";
 import Note from "./Note";
 
-function Index({ info, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) {
+function Index({ info, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const sorted = [...info].sort((a, b) => {
     if (a.title === "To Buy") return -1;
     if (b.title === "To Buy") return 1;
+    if (a.title === "Bought") return -1;
+    if (b.title === "Bought") return 1;
     return a.title.localeCompare(b.title);
   });
 
@@ -18,6 +20,7 @@ function Index({ info, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc })
           updateFunc={updateFunc}
           addBodyFunc={addBodyFunc}
           deleteCheckedFunc={deleteCheckedFunc}
+          moveBodyFunc={moveBodyFunc}
         />
       ))}
     </>

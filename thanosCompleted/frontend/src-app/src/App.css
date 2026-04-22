@@ -352,6 +352,11 @@
   font-weight: 900;
 }
 
+.titler-bought {
+  color: #27ae60;
+  font-weight: 900;
+}
+
 .body {
   font-size: 0.9rem;
   color: #555;
@@ -389,6 +394,21 @@
   border-color: #ccc;
   color: #ccc;
   cursor: not-allowed;
+}
+
+/* Drag and drop */
+.draggable-item {
+  cursor: grab;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+  opacity: 0.6;
+}
+
+.container.drag-over {
+  border: 2px dashed #4a90e2;
+  background: #f0f7ff;
 }
 
 /* Body item row */

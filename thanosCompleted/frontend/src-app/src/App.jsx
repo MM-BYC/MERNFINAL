@@ -148,6 +148,30 @@ function App() {
       ));
     }
   };
+  // -------------------------------------[MOVE BODY between cards]
+  const moveBody = async (srcNoteId, bodyId, text, destNoteId) => {
+    if (srcNoteId === destNoteId) return;
+    const tempId = `temp_${Date.now()}`;
+    setNotes((prev) => prev.map((n) => {
+      if (n._id === srcNoteId) return { ...n, bodies: (n.bodies || []).filter(b => String(b._id) !== String(bodyId)) };
+      if (n._id === destNoteId) return { ...n, bodies: [...(n.bodies || []), { _id: tempId, text }] };
+      return n;
+    }));
+    try {
+      const [addRes, delRes] = await Promise.all([
+        axios.post(`/notes/${destNoteId}/bodies`, { text }),
+        axios.delete(`/notes/${srcNoteId}/bodies`, { data: { bodyIds: [bodyId] } }),
+      ]);
+      setNotes((prev) => prev.map((n) => {
+        if (n._id === destNoteId) return addRes.data.note;
+        if (n._id === srcNoteId) return delRes.data.deleted ? n : delRes.data.note;
+        return n;
+      }));
+    } catch {
+      fetchNotes();
+    }
+  };
+
   // -------------------------------------[DELETE]
   const deleteNote = async (_id) => {
     await axios.delete(`/notes/${_id}`);
@@ -231,7 +255,7 @@ function App() {
 
           <div className="notes-grid">
             {notes ? (
-              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} addBodyFunc={addBodyToNote} deleteCheckedFunc={deleteCheckedBodies} />
+              <Index info={notes} deleteFunc={deleteNote} updateFunc={updateNote} addBodyFunc={addBodyToNote} deleteCheckedFunc={deleteCheckedBodies} moveBodyFunc={moveBody} />
             ) : (
               <p>No notes yet.</p>
             )}

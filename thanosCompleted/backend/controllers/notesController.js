@@ -5,6 +5,10 @@ const fetchNotes = async (req, res) => {
   if (!existing) {
     await Note.create({ title: "To Buy", bodies: [], user: req.user._id });
   }
+  const existingBought = await Note.findOne({ title: "Bought", user: req.user._id });
+  if (!existingBought) {
+    await Note.create({ title: "Bought", bodies: [], user: req.user._id });
+  }
 
   let notes = await Note.find({ user: req.user._id }).lean();
 
@@ -68,7 +72,7 @@ const deleteCheckedBodies = async (req, res) => {
     { $pull: { bodies: { _id: { $in: bodyIds } } } },
     { new: true }
   );
-  if (note && note.bodies.length === 0 && note.title !== "To Buy") {
+  if (note && note.bodies.length === 0 && note.title !== "To Buy" && note.title !== "Bought") {
     await Note.deleteOne({ _id: req.params.id, user: req.user._id });
     return res.json({ deleted: true });
   }
