@@ -1,6 +1,11 @@
 const Note = require("../models/note");
 
 const fetchNotes = async (req, res) => {
+  const existing = await Note.findOne({ title: "To Buy", user: req.user._id });
+  if (!existing) {
+    await Note.create({ title: "To Buy", bodies: [], user: req.user._id });
+  }
+
   let notes = await Note.find({ user: req.user._id }).lean();
 
   const outdated = notes.filter(n => n.body && (!n.bodies || n.bodies.length === 0));
@@ -63,7 +68,7 @@ const deleteCheckedBodies = async (req, res) => {
     { $pull: { bodies: { _id: { $in: bodyIds } } } },
     { new: true }
   );
-  if (note && note.bodies.length === 0) {
+  if (note && note.bodies.length === 0 && note.title !== "To Buy") {
     await Note.deleteOne({ _id: req.params.id, user: req.user._id });
     return res.json({ deleted: true });
   }

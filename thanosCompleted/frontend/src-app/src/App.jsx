@@ -121,7 +121,7 @@ function App() {
       n._id === noteId
         ? { ...n, bodies: (n.bodies || []).filter(b => !bodyIds.includes(String(b._id))) }
         : n
-    ).filter(n => n._id !== noteId || (n.bodies || []).length > 0));
+    ).filter(n => n._id !== noteId || (n.bodies || []).length > 0 || n.title === "To Buy"));
     try {
       const res = await axios.delete(`/notes/${noteId}/bodies`, { data: { bodyIds } });
       if (res.data.deleted) {

@@ -47,7 +47,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc }) 
   return (
     <div className={`container${addingBody ? " is-adding" : ""}`}>
       <div className="card-header">
-        <h2 className="titler">{note.title}</h2>
+        <h2 className={`titler${note.title === "To Buy" ? " titler-tobuy" : ""}`}>{note.title}</h2>
         <button
           className="card-delete-btn"
           disabled={!Object.values(checked).some(Boolean)}
