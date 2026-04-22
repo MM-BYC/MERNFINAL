@@ -110,7 +110,7 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
           draggable={isDraggableCard}
           onDragStart={isDraggableCard ? (e) => handleDragStart(e, b) : undefined}
           onDragOver={isDraggableCard ? handleDragOver : undefined}
-          onDrop={isDraggableCard ? handleDrop : undefined}
+          onDrop={isDraggableCard ? (e) => { e.stopPropagation(); handleDrop(e); } : undefined}
         >
           {isDraggableCard && <span className="drag-handle">⠿</span>}
           <button
