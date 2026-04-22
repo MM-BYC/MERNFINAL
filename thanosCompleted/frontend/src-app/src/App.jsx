@@ -16,17 +16,38 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [modalPos, setModalPos] = useState({ x: 0, y: 0 });
   const dragState = useRef({ dragging: false, startX: 0, startY: 0 });
+  const modalPosRef = useRef({ x: 0, y: 0 });
+  const dragHandleRef = useRef(null);
 
-  useEffect(() => { if (showModal) setModalPos({ x: 0, y: 0 }); }, [showModal]);
+  useEffect(() => { if (showModal) { setModalPos({ x: 0, y: 0 }); modalPosRef.current = { x: 0, y: 0 }; } }, [showModal]);
+
+  useEffect(() => { modalPosRef.current = modalPos; }, [modalPos]);
 
   const onDragStart = (clientX, clientY) => {
-    dragState.current = { dragging: true, startX: clientX - modalPos.x, startY: clientY - modalPos.y };
+    const pos = modalPosRef.current;
+    dragState.current = { dragging: true, startX: clientX - pos.x, startY: clientY - pos.y };
   };
   const onDragMove = (clientX, clientY) => {
     if (!dragState.current.dragging) return;
     setModalPos({ x: clientX - dragState.current.startX, y: clientY - dragState.current.startY });
   };
   const onDragEnd = () => { dragState.current.dragging = false; };
+
+  useEffect(() => {
+    const el = dragHandleRef.current;
+    if (!el) return;
+    const onTouchStart = (e) => { e.preventDefault(); onDragStart(e.touches[0].clientX, e.touches[0].clientY); };
+    const onTouchMove = (e) => { e.preventDefault(); onDragMove(e.touches[0].clientX, e.touches[0].clientY); };
+    const onTouchEnd = () => onDragEnd();
+    el.addEventListener('touchstart', onTouchStart, { passive: false });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('touchend', onTouchEnd);
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [showModal]);
   // --------------------[State]
 
   // -------------------------------------[CREATE]
@@ -128,11 +149,9 @@ function App() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <div
+                  ref={dragHandleRef}
                   className="modal-header modal-drag-handle"
                   onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX, e.clientY); }}
-                  onTouchStart={(e) => { e.preventDefault(); onDragStart(e.touches[0].clientX, e.touches[0].clientY); }}
-                  onTouchMove={(e) => { e.preventDefault(); onDragMove(e.touches[0].clientX, e.touches[0].clientY); }}
-                  onTouchEnd={onDragEnd}
                 >
                   <h2 className="note-form-title">+ New Note</h2>
                   <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
