@@ -78,6 +78,15 @@
   margin: 0.5rem 0 1rem;
 }
 
+/* Sticky dashboard header */
+.dashboard-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  padding-bottom: 0.5rem;
+}
+
 /* Dashboard */
 .dashboard-header {
   display: flex;
