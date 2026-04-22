@@ -117,8 +117,18 @@ function App() {
   };
 
   const addBodyToNote = async (noteId, text) => {
-    const res = await axios.post(`/notes/${noteId}/bodies`, { text });
-    setNotes((prev) => prev.map((n) => (n._id === noteId ? res.data.note : n)));
+    const tempId = `temp_${Date.now()}`;
+    setNotes((prev) => prev.map((n) =>
+      n._id === noteId ? { ...n, bodies: [...(n.bodies || []), { _id: tempId, text }] } : n
+    ));
+    try {
+      const res = await axios.post(`/notes/${noteId}/bodies`, { text });
+      setNotes((prev) => prev.map((n) => n._id === noteId ? res.data.note : n));
+    } catch {
+      setNotes((prev) => prev.map((n) =>
+        n._id === noteId ? { ...n, bodies: (n.bodies || []).filter(b => b._id !== tempId) } : n
+      ));
+    }
   };
   // -------------------------------------[DELETE]
   const deleteNote = async (_id) => {

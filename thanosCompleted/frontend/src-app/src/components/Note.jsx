@@ -36,11 +36,12 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc }) {
     setIsDirty(false);
   };
 
-  const handleAddBody = async () => {
+  const handleAddBody = () => {
     if (!newBodyText.trim()) return;
-    await addBodyFunc(note._id, newBodyText.trim());
+    const text = newBodyText.trim();
     setNewBodyText("");
     setAddingBody(false);
+    addBodyFunc(note._id, text);
   };
 
   return (
