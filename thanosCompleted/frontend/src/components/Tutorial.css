@@ -11,8 +11,6 @@
   position: fixed;
   border-radius: 10px;
   box-shadow: 0 0 0 9999px rgba(0, 20, 30, 0.58);
-  outline: 2px solid rgba(78, 205, 196, 0.8);
-  outline-offset: 3px;
   pointer-events: none;
   z-index: 9001;
   transition: top 0.28s ease, left 0.28s ease, width 0.28s ease, height 0.28s ease;
