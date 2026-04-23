@@ -125,17 +125,18 @@
 
 .tut-skip {
   background: transparent;
-  border: 1px solid rgba(26, 83, 92, 0.28);
-  color: rgba(26, 83, 92, 0.6);
+  border: 1px solid rgba(26, 83, 92, 0.5);
+  color: #1a7a70;
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.35rem 0.85rem;
   border-radius: 20px;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 .tut-skip:hover {
-  border-color: rgba(26, 83, 92, 0.5);
+  background: rgba(26, 83, 92, 0.1);
+  border-color: #1a7a70;
   color: #1a535c;
 }
 
@@ -196,12 +197,13 @@
 [data-theme="dark"] .tut-text   { color: #000; }
 
 [data-theme="dark"] .tut-skip {
-  border-color: rgba(78, 205, 196, 0.28);
-  color: rgba(78, 205, 196, 0.6);
+  border-color: rgba(26, 83, 92, 0.5);
+  color: #1a7a70;
 }
 [data-theme="dark"] .tut-skip:hover {
-  border-color: rgba(78, 205, 196, 0.55);
-  color: #4ecdc4;
+  background: rgba(26, 83, 92, 0.1);
+  border-color: #1a7a70;
+  color: #1a535c;
 }
 
 [data-theme="dark"] .tut-arrow-left::before   { border-right-color:  rgba(14, 24, 38, 0.76); }
