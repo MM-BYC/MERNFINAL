@@ -117,10 +117,15 @@ body {
   user-select: none;
 }
 
-/* Compact brand inside the nav bar */
+/* Compact brand inside the nav bar: flat color, matches page title size */
 .snapnote-brand.snapnote-brand-compact {
-  font-size: 1.5rem;
+  font-size: 2.125rem;
   margin: 0;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  color: #00fcce;
   text-shadow: none;
   animation: none;
   transform: none;
@@ -942,7 +947,8 @@ body {
     display: none;
   }
 
-  .page-title {
+  .page-title,
+  .snapnote-brand.snapnote-brand-compact {
     font-size: 1.6rem;
   }
 
@@ -995,16 +1001,13 @@ body {
     right: 0.75rem;
   }
 
-  .page-title {
+  .page-title,
+  .snapnote-brand.snapnote-brand-compact {
     font-size: 1.2rem;
   }
 
   .page-subtitle {
     font-size: 0.8rem;
-  }
-
-  .snapnote-brand.snapnote-brand-compact {
-    font-size: 1.15rem;
   }
 
   /* Notes grid: single column on small phones */
@@ -1134,7 +1137,7 @@ body {
   color: #94a3b8;
 }
 
-[data-theme="dark"] .snapnote-brand {
+[data-theme="dark"] .snapnote-brand:not(.snapnote-brand-compact) {
   background: linear-gradient(
     135deg,
     #008a72 0%,
