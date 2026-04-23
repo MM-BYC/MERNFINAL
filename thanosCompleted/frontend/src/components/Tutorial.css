@@ -97,20 +97,20 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(26, 83, 92, 0.6);
+  color: rgba(0, 0, 0, 0.6);
   margin-bottom: 0.3rem;
 }
 
 .tut-title {
   font-size: 1rem;
   font-weight: 800;
-  color: #1a535c;
+  color: #000;
   margin-bottom: 0.4rem;
 }
 
 .tut-text {
   font-size: 0.865rem;
-  color: #2a3a42;
+  color: #000;
   line-height: 1.55;
   margin: 0 0 0.9rem;
 }
@@ -191,9 +191,9 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] .tut-count  { color: rgba(78, 205, 196, 0.65); }
-[data-theme="dark"] .tut-title  { color: #4ecdc4; }
-[data-theme="dark"] .tut-text   { color: rgba(210, 230, 240, 0.88); }
+[data-theme="dark"] .tut-count  { color: rgba(0, 0, 0, 0.6); }
+[data-theme="dark"] .tut-title  { color: #000; }
+[data-theme="dark"] .tut-text   { color: #000; }
 
 [data-theme="dark"] .tut-skip {
   border-color: rgba(78, 205, 196, 0.28);
