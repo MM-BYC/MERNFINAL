@@ -503,17 +503,26 @@ body {
 /* Drag and drop */
 .drag-handle {
   flex-shrink: 0;
-  font-size: 1.02rem;
-  color: #bbb;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 4px);
+  gap: 3px;
   cursor: grab;
   user-select: none;
-  line-height: 1;
-  padding: 0 2px;
-  transition: color 0.15s;
+  padding: 0 3px;
+  align-self: center;
+  transition: opacity 0.15s;
+  opacity: 0.45;
 }
 
 .drag-handle:hover {
-  color: #888;
+  opacity: 0.75;
+}
+
+.drag-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #aaa;
 }
 
 .card-tobuy .drag-handle {

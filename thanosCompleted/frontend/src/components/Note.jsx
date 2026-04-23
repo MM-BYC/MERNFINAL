@@ -143,7 +143,11 @@ function Note({ note, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, dele
           onDragOver={isDraggableCard ? handleDragOver : undefined}
           onDrop={isDraggableCard ? (e) => { e.stopPropagation(); handleDrop(e); } : undefined}
         >
-          {isDraggableCard && <span className="drag-handle">⠿</span>}
+          {isDraggableCard && (
+            <span className="drag-handle">
+              {Array.from({ length: 9 }).map((_, i) => <span key={i} className="drag-dot" />)}
+            </span>
+          )}
           <button
             className={`check-box${checked[b._id] ? " checked" : ""}`}
             onClick={() => toggleChecked(b._id)}
