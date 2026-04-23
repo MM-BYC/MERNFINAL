@@ -254,12 +254,12 @@ function App() {
                     />
                   </div>
                   <div className="note-field">
-                    <label>Body</label>
+                    <label>Item</label>
                     <input
                       name="body"
                       value={createForm.body}
                       onChange={updateCreateFormField}
-                      placeholder="Note body"
+                      placeholder="Item"
                     />
                   </div>
                   <button className="note-submit-btn" type="submit">Add Note</button>
