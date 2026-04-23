@@ -1142,7 +1142,11 @@ body {
 }
 
 [data-theme="dark"] .snapnote-brand.snapnote-brand-compact {
-  text-shadow: none;
+  text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
 }
 
 [data-theme="dark"] .snapnote-brand:not(.snapnote-brand-compact) {
@@ -1161,6 +1165,10 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff,
     1px 1px 0 rgba(0, 60, 50, 0.75),
     2px 2px 0 rgba(0, 48, 40, 0.65),
     3px 3px 0 rgba(0, 36, 30, 0.55),
