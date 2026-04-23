@@ -34,7 +34,7 @@ const STEPS = [
 
 const BUBBLE_W = 230;
 const BUBBLE_H = 148;
-const GAP = 14;
+const GAP = 5;
 const PAD = 12;
 
 function getPlacement(r) {
