@@ -126,7 +126,11 @@ body {
   background-clip: initial;
   -webkit-text-fill-color: currentColor;
   color: #00fcce;
-  text-shadow: none;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
   animation: none;
   transform: none;
   transition: none;
@@ -1135,6 +1139,10 @@ body {
 
 [data-theme="dark"] .page-subtitle {
   color: #94a3b8;
+}
+
+[data-theme="dark"] .snapnote-brand.snapnote-brand-compact {
+  text-shadow: none;
 }
 
 [data-theme="dark"] .snapnote-brand:not(.snapnote-brand-compact) {
