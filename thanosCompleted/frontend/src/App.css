@@ -76,7 +76,7 @@ body {
 }
 
 /* App Brand */
-@keyframes aqua-metal-shimmer {
+@keyframes violet-metal-shimmer {
   0%   { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
 }
@@ -91,26 +91,26 @@ body {
   font-family: "Segoe UI", "SF Pro Display", "Inter", system-ui, sans-serif;
   background: linear-gradient(
     135deg,
-    #023e5a 0%,
-    #0a6e8f 18%,
-    #2fb4d8 38%,
-    #c6ecf5 50%,
-    #2fb4d8 62%,
-    #0a6e8f 82%,
-    #023e5a 100%
+    #2d0a66 0%,
+    #5a1fc2 18%,
+    #7d2eff 38%,
+    #e8dcff 50%,
+    #7d2eff 62%,
+    #5a1fc2 82%,
+    #2d0a66 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow:
-    1px 1px 0 rgba(2, 62, 90, 0.75),
-    2px 2px 0 rgba(2, 52, 76, 0.65),
-    3px 3px 0 rgba(2, 42, 62, 0.55),
-    4px 4px 0 rgba(2, 32, 48, 0.45),
-    5px 5px 14px rgba(0, 20, 32, 0.5),
-    0 0 26px rgba(47, 180, 216, 0.35);
-  animation: aqua-metal-shimmer 5s linear infinite;
+    1px 1px 0 rgba(45, 10, 102, 0.75),
+    2px 2px 0 rgba(38, 8, 86, 0.65),
+    3px 3px 0 rgba(30, 6, 70, 0.55),
+    4px 4px 0 rgba(22, 4, 54, 0.45),
+    5px 5px 14px rgba(14, 2, 38, 0.5),
+    0 0 26px rgba(125, 46, 255, 0.4);
+  animation: violet-metal-shimmer 5s linear infinite;
   transition: transform 0.12s ease-out;
   will-change: transform;
   transform-style: preserve-3d;
@@ -1109,25 +1109,25 @@ body {
 [data-theme="dark"] .snapnote-brand {
   background: linear-gradient(
     135deg,
-    #0a5a7c 0%,
-    #1f9bc4 18%,
-    #5ed0ec 38%,
-    #e4f7fc 50%,
-    #5ed0ec 62%,
-    #1f9bc4 82%,
-    #0a5a7c 100%
+    #4a1aa0 0%,
+    #7d2eff 18%,
+    #a775ff 38%,
+    #f3ebff 50%,
+    #a775ff 62%,
+    #7d2eff 82%,
+    #4a1aa0 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow:
-    1px 1px 0 rgba(0, 55, 78, 0.75),
-    2px 2px 0 rgba(0, 45, 64, 0.65),
-    3px 3px 0 rgba(0, 35, 50, 0.55),
-    4px 4px 0 rgba(0, 26, 38, 0.45),
-    5px 5px 14px rgba(0, 8, 14, 0.55),
-    0 0 28px rgba(94, 208, 236, 0.4);
+    1px 1px 0 rgba(40, 8, 90, 0.75),
+    2px 2px 0 rgba(32, 6, 74, 0.65),
+    3px 3px 0 rgba(24, 4, 58, 0.55),
+    4px 4px 0 rgba(16, 2, 42, 0.45),
+    5px 5px 14px rgba(8, 0, 20, 0.55),
+    0 0 28px rgba(167, 117, 255, 0.45);
 }
 
 [data-theme="dark"] .date-day {
