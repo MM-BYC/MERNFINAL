@@ -47,7 +47,7 @@
   transform: translateY(-50%);
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(188, 230, 80, 0.72);
+  border-right: 10px solid rgba(188, 230, 80, 0.97);
 }
 
 /* Arrow pointing right (bubble is to the left of target) */
@@ -57,7 +57,7 @@
   transform: translateY(-50%);
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(188, 230, 80, 0.72);
+  border-left: 10px solid rgba(188, 230, 80, 0.97);
 }
 
 /* Arrow pointing up (bubble is below target) */
@@ -67,7 +67,7 @@
   transform: translateX(-50%);
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid rgba(188, 230, 80, 0.72);
+  border-bottom: 10px solid rgba(188, 230, 80, 0.97);
 }
 
 /* Arrow pointing down (bubble is above target) */
@@ -77,7 +77,7 @@
   transform: translateX(-50%);
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid rgba(188, 230, 80, 0.72);
+  border-top: 10px solid rgba(188, 230, 80, 0.97);
 }
 
 /* Fallback: centered bubble when target element not found */
@@ -204,10 +204,10 @@
   color: #1a535c;
 }
 
-[data-theme="dark"] .tut-arrow-left::before   { border-right-color:  rgba(14, 24, 38, 0.76); }
-[data-theme="dark"] .tut-arrow-right::before  { border-left-color:   rgba(14, 24, 38, 0.76); }
-[data-theme="dark"] .tut-arrow-top::before    { border-bottom-color: rgba(14, 24, 38, 0.76); }
-[data-theme="dark"] .tut-arrow-bottom::before { border-top-color:    rgba(14, 24, 38, 0.76); }
+[data-theme="dark"] .tut-arrow-left::before   { border-right-color:  rgba(188, 230, 80, 0.97); }
+[data-theme="dark"] .tut-arrow-right::before  { border-left-color:   rgba(188, 230, 80, 0.97); }
+[data-theme="dark"] .tut-arrow-top::before    { border-bottom-color: rgba(188, 230, 80, 0.97); }
+[data-theme="dark"] .tut-arrow-bottom::before { border-top-color:    rgba(188, 230, 80, 0.97); }
 
 [data-theme="dark"] .tutorial-btn {
   background: rgba(30, 45, 60, 0.55);
