@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 
 function Note({ note, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const isToBuy = note.title === "To Buy";
+  const isToReturn = note.title === "To Return";
   const isTrashBin = note.title === "Trash Bin";
-  const isLocked = isToBuy || isTrashBin;
+  const isLocked = isToBuy || isToReturn || isTrashBin;
   const isDraggableCard = true;
 
   const [bodies, setBodies] = useState({});

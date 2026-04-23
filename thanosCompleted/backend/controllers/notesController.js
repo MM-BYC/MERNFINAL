@@ -1,16 +1,14 @@
 const Note = require("../models/note");
 
-const PROTECTED_TITLES = ["To Buy", "Trash Bin"];
+const PROTECTED_TITLES = ["To Buy", "To Return", "Trash Bin"];
 const isProtectedTitle = (title) => PROTECTED_TITLES.includes(title);
 
 const fetchNotes = async (req, res) => {
-  const existing = await Note.findOne({ title: "To Buy", user: req.user._id });
-  if (!existing) {
-    await Note.create({ title: "To Buy", bodies: [], user: req.user._id });
-  }
-  const existingTrashBin = await Note.findOne({ title: "Trash Bin", user: req.user._id });
-  if (!existingTrashBin) {
-    await Note.create({ title: "Trash Bin", bodies: [], user: req.user._id });
+  for (const title of PROTECTED_TITLES) {
+    const existing = await Note.findOne({ title, user: req.user._id });
+    if (!existing) {
+      await Note.create({ title, bodies: [], user: req.user._id });
+    }
   }
 
   let notes = await Note.find({ user: req.user._id }).lean();
