@@ -8,7 +8,7 @@ export default function AuthPage({ setUser }) {
   return (
     <>
       <div className="page-theme-toggle"><ThemeToggle /></div>
-      <SnapNoteBrand scrollParallax />
+      <SnapNoteBrand compact />
       <div className="auth-toggle">
         <button
           className={`auth-toggle-btn ${!showLogin ? "active" : ""}`}
