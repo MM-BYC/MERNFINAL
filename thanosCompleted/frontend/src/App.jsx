@@ -203,10 +203,7 @@ function App() {
                 <SnapNoteBrand compact />
               </div>
               <div className="app-navbar-right">
-                <div className="user-chip">
-                  <span className="user-chip-greeting">Welcome, {user.firstname} {user.lastname}</span>
-                  <DateDisplay className="user-chip-date" />
-                </div>
+                <DateDisplay className="navbar-date" />
                 <ThemeToggle />
                 <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
               </div>
@@ -214,7 +211,7 @@ function App() {
 
             <div className="page-header">
               <h1 className="page-title">Dashboard</h1>
-              <p className="page-subtitle">Your notes</p>
+              <p className="page-subtitle">Welcome back, {user.firstname} {user.lastname}</p>
             </div>
 
             <div className="dashboard-toolbar">
