@@ -186,9 +186,9 @@
 }
 
 [data-theme="dark"] .tut-bubble {
-  background: rgba(14, 24, 38, 0.76);
-  border-color: rgba(78, 205, 196, 0.22);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(78, 205, 196, 0.12);
+  background: rgba(188, 230, 80, 0.97);
+  border-color: rgba(160, 210, 50, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .tut-count  { color: rgba(78, 205, 196, 0.65); }
