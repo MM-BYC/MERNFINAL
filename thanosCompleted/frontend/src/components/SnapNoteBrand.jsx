@@ -1,9 +1,10 @@
 import { useRef, useEffect } from "react";
 
-function SnapNoteBrand({ scrollParallax = false }) {
+function SnapNoteBrand({ scrollParallax = false, compact = false }) {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (compact) return;
     const el = ref.current;
     if (!el) return;
 
@@ -42,10 +43,10 @@ function SnapNoteBrand({ scrollParallax = false }) {
       if (scrollParallax) window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(rafId);
     };
-  }, [scrollParallax]);
+  }, [scrollParallax, compact]);
 
   return (
-    <h1 ref={ref} className="snapnote-brand">
+    <h1 ref={ref} className={`snapnote-brand${compact ? " snapnote-brand-compact" : ""}`}>
       SnapNote
     </h1>
   );
