@@ -1,5 +1,8 @@
 const Note = require("../models/note");
 
+const PROTECTED_TITLES = ["To Buy", "Trash Bin"];
+const isProtectedTitle = (title) => PROTECTED_TITLES.includes(title);
+
 const fetchNotes = async (req, res) => {
   const existing = await Note.findOne({ title: "To Buy", user: req.user._id });
   if (!existing) {
@@ -43,6 +46,13 @@ const createNote = async (req, res) => {
 const updateNote = async (req, res) => {
   const { bodyId, text, title } = req.body;
   if (title !== undefined) {
+    const current = await Note.findOne({ _id: req.params.id, user: req.user._id });
+    if (current && isProtectedTitle(current.title)) {
+      return res.status(403).json({ error: `"${current.title}" cannot be renamed` });
+    }
+    if (isProtectedTitle(title)) {
+      return res.status(403).json({ error: `"${title}" is reserved` });
+    }
     const note = await Note.findOneAndUpdate(
       { _id: req.params.id, user: req.user._id },
       { $set: { title } },
@@ -59,6 +69,10 @@ const updateNote = async (req, res) => {
 };
 
 const deleteNote = async (req, res) => {
+  const note = await Note.findOne({ _id: req.params.id, user: req.user._id });
+  if (note && isProtectedTitle(note.title)) {
+    return res.status(403).json({ error: `"${note.title}" cannot be deleted` });
+  }
   await Note.deleteOne({ _id: req.params.id, user: req.user._id });
   res.json({ success: "Record Deleted Successfully" });
 };
@@ -82,7 +96,7 @@ const deleteCheckedBodies = async (req, res) => {
     { $pull: { bodies: { _id: { $in: validIds } } } },
     { new: true }
   );
-  if (note && note.bodies.length === 0 && note.title !== "To Buy" && note.title !== "Trash Bin") {
+  if (note && note.bodies.length === 0 && !isProtectedTitle(note.title)) {
     await Note.deleteOne({ _id: req.params.id, user: req.user._id });
     return res.json({ deleted: true });
   }
