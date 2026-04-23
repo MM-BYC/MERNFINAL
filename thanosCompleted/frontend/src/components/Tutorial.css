@@ -1,0 +1,222 @@
+/* ── Tutorial overlay root ── */
+.tut-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: all;
+}
+
+/* ── Spotlight cutout ── */
+.tut-spotlight {
+  position: fixed;
+  border-radius: 10px;
+  box-shadow: 0 0 0 9999px rgba(0, 20, 30, 0.58);
+  outline: 2px solid rgba(78, 205, 196, 0.8);
+  outline-offset: 3px;
+  pointer-events: none;
+  z-index: 9001;
+  transition: top 0.28s ease, left 0.28s ease, width 0.28s ease, height 0.28s ease;
+}
+
+/* ── Speech bubble ── */
+.tut-bubble {
+  position: fixed;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(28px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem 1rem;
+  box-shadow:
+    0 8px 32px rgba(20, 72, 82, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  z-index: 9002;
+  pointer-events: all;
+  transition: top 0.28s ease, left 0.28s ease;
+}
+
+/* ── Arrow pointer ── */
+.tut-bubble::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Arrow pointing left (bubble is to the right of target) */
+.tut-arrow-left::before {
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgba(255, 255, 255, 0.68);
+}
+
+/* Arrow pointing right (bubble is to the left of target) */
+.tut-arrow-right::before {
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(255, 255, 255, 0.68);
+}
+
+/* Arrow pointing up (bubble is below target) */
+.tut-arrow-top::before {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba(255, 255, 255, 0.68);
+}
+
+/* Arrow pointing down (bubble is above target) */
+.tut-arrow-bottom::before {
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.68);
+}
+
+/* Fallback: centered bubble when target element not found */
+.tut-center {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: none;
+}
+.tut-center::before { display: none; }
+
+/* ── Bubble content ── */
+.tut-count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(26, 83, 92, 0.6);
+  margin-bottom: 0.3rem;
+}
+
+.tut-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1a535c;
+  margin-bottom: 0.4rem;
+}
+
+.tut-text {
+  font-size: 0.865rem;
+  color: #2a3a42;
+  line-height: 1.55;
+  margin: 0 0 0.9rem;
+}
+
+/* ── Buttons ── */
+.tut-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tut-skip {
+  background: transparent;
+  border: 1px solid rgba(26, 83, 92, 0.28);
+  color: rgba(26, 83, 92, 0.6);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.tut-skip:hover {
+  border-color: rgba(26, 83, 92, 0.5);
+  color: #1a535c;
+}
+
+.tut-next {
+  background: rgba(26, 83, 92, 0.85);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(78, 205, 196, 0.4);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.38rem 1.15rem;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(26, 83, 92, 0.28), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.tut-next:hover {
+  background: rgba(26, 83, 92, 0.98);
+  box-shadow: 0 4px 18px rgba(26, 83, 92, 0.42);
+}
+
+/* ── Tutorial trigger button (in toolbar) ── */
+.tutorial-btn {
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #1a535c;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 22px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(26,83,92,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: background 0.18s, box-shadow 0.18s;
+  letter-spacing: 0.02em;
+}
+.tutorial-btn:hover {
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 0 4px 16px rgba(26, 83, 92, 0.18);
+}
+
+/* ── Dark mode ── */
+[data-theme="dark"] .tut-spotlight {
+  box-shadow: 0 0 0 9999px rgba(0, 5, 12, 0.68);
+  outline-color: rgba(78, 205, 196, 0.65);
+}
+
+[data-theme="dark"] .tut-bubble {
+  background: rgba(14, 24, 38, 0.76);
+  border-color: rgba(78, 205, 196, 0.22);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(78, 205, 196, 0.12);
+}
+
+[data-theme="dark"] .tut-count  { color: rgba(78, 205, 196, 0.65); }
+[data-theme="dark"] .tut-title  { color: #4ecdc4; }
+[data-theme="dark"] .tut-text   { color: rgba(210, 230, 240, 0.88); }
+
+[data-theme="dark"] .tut-skip {
+  border-color: rgba(78, 205, 196, 0.28);
+  color: rgba(78, 205, 196, 0.6);
+}
+[data-theme="dark"] .tut-skip:hover {
+  border-color: rgba(78, 205, 196, 0.55);
+  color: #4ecdc4;
+}
+
+[data-theme="dark"] .tut-arrow-left::before   { border-right-color:  rgba(14, 24, 38, 0.76); }
+[data-theme="dark"] .tut-arrow-right::before  { border-left-color:   rgba(14, 24, 38, 0.76); }
+[data-theme="dark"] .tut-arrow-top::before    { border-bottom-color: rgba(14, 24, 38, 0.76); }
+[data-theme="dark"] .tut-arrow-bottom::before { border-top-color:    rgba(14, 24, 38, 0.76); }
+
+[data-theme="dark"] .tutorial-btn {
+  background: rgba(30, 45, 60, 0.55);
+  border-color: rgba(78, 205, 196, 0.28);
+  color: #4ecdc4;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(78,205,196,0.1);
+}
+[data-theme="dark"] .tutorial-btn:hover {
+  background: rgba(30, 45, 60, 0.8);
+}

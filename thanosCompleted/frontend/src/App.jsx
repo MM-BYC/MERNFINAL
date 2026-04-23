@@ -6,6 +6,7 @@ import AuthPage from "./pages/AuthPage";
 import DateDisplay from "./components/DateDisplay";
 import SnapNoteBrand from "./components/SnapNoteBrand";
 import ThemeToggle from "./components/ThemeToggle";
+import Tutorial from "./components/Tutorial";
 import { getUser, logOut, getToken } from "./utilities/users-service";
 
 axios.interceptors.request.use((config) => {
@@ -24,6 +25,7 @@ function App() {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false);
   const [modalPos, setModalPos] = useState({ x: 0, y: 0 });
   const dragState = useRef({ dragging: false, startX: 0, startY: 0 });
   const modalPosRef = useRef({ x: 0, y: 0 });
@@ -205,8 +207,10 @@ function App() {
             </div>
 
             <div className="dashboard-toolbar">
+              <button className="tutorial-btn" onClick={() => setShowTutorial(true)}>Tutorial</button>
               <button className="new-note-btn" onClick={() => setShowModal(true)}>+ New Note</button>
             </div>
+            {showTutorial && <Tutorial onClose={() => setShowTutorial(false)} />}
           </div>
 
           {showModal && (
