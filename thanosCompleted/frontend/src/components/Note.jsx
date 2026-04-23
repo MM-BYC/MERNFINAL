@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
+function Note({ note, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const isToBuy = note.title === "To Buy";
   const isTrashBin = note.title === "Trash Bin";
+  const isLocked = isToBuy || isTrashBin;
   const isDraggableCard = true;
 
   const [bodies, setBodies] = useState({});
@@ -11,6 +12,8 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
   const [saving, setSaving] = useState(false);
   const [addingBody, setAddingBody] = useState(false);
   const [newBodyText, setNewBodyText] = useState("");
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [titleValue, setTitleValue] = useState(note.title);
   const [dragOver, setDragOver] = useState(false);
 
   useEffect(() => {
@@ -47,6 +50,13 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
     setNewBodyText("");
     setAddingBody(false);
     addBodyFunc(note._id, text);
+  };
+
+  const handleTitleSave = () => {
+    const trimmed = titleValue.trim();
+    if (trimmed && trimmed !== note.title) updateTitleFunc(note._id, trimmed);
+    else setTitleValue(note.title);
+    setEditingTitle(false);
   };
 
   const handleDragStart = (e, b) => {
@@ -90,7 +100,28 @@ function Note({ note, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, mo
       onDrop={isDraggableCard ? handleDrop : undefined}
     >
       <div className="card-header">
-        <h2 className={`titler${isToBuy ? " titler-tobuy" : ""}${isTrashBin ? " titler-bought" : ""}`}>{note.title}</h2>
+        {editingTitle ? (
+          <input
+            className="title-edit-input"
+            value={titleValue}
+            autoFocus
+            onChange={(e) => setTitleValue(e.target.value)}
+            onBlur={handleTitleSave}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleTitleSave();
+              if (e.key === "Escape") { setTitleValue(note.title); setEditingTitle(false); }
+            }}
+          />
+        ) : (
+          <h2
+            className={`titler${isToBuy ? " titler-tobuy" : ""}${isTrashBin ? " titler-bought" : ""}`}
+            title={isLocked ? "" : "Click to edit title"}
+            onClick={() => { if (!isLocked) { setTitleValue(note.title); setEditingTitle(true); } }}
+            style={isLocked ? {} : { cursor: "pointer" }}
+          >
+            {note.title}
+          </h2>
+        )}
         <button
           className="card-delete-btn"
           disabled={!Object.values(checked).some(Boolean)}

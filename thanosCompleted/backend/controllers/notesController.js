@@ -41,7 +41,15 @@ const createNote = async (req, res) => {
 };
 
 const updateNote = async (req, res) => {
-  const { bodyId, text } = req.body;
+  const { bodyId, text, title } = req.body;
+  if (title !== undefined) {
+    const note = await Note.findOneAndUpdate(
+      { _id: req.params.id, user: req.user._id },
+      { $set: { title } },
+      { new: true }
+    );
+    return res.json({ note });
+  }
   const note = await Note.findOneAndUpdate(
     { _id: req.params.id, user: req.user._id, "bodies._id": bodyId },
     { $set: { "bodies.$.text": text } },

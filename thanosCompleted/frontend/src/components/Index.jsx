@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note";
 
-function Index({ info, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
+function Index({ info, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const sorted = [...info].sort((a, b) => {
     if (a.title === "To Buy") return -1;
     if (b.title === "To Buy") return 1;
@@ -18,6 +18,7 @@ function Index({ info, deleteFunc, updateFunc, addBodyFunc, deleteCheckedFunc, m
           note={note}
           deleteFunc={deleteFunc}
           updateFunc={updateFunc}
+          updateTitleFunc={updateTitleFunc}
           addBodyFunc={addBodyFunc}
           deleteCheckedFunc={deleteCheckedFunc}
           moveBodyFunc={moveBodyFunc}
