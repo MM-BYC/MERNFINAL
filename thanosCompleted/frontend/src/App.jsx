@@ -135,7 +135,7 @@ function App() {
     try {
       const res = await axios.delete(`/notes/${noteId}/bodies`, { data: { bodyIds } });
       if (res.data.deleted) {
-        setNotes((prev) => prev.filter(n => n._id !== noteId && n.title !== "To Buy" && n.title !== "To Return" && n.title !== "Trash Bin"));
+        setNotes((prev) => prev.filter(n => n._id !== noteId));
       } else {
         setNotes((prev) => prev.map(n => n._id === noteId ? res.data.note : n));
       }
