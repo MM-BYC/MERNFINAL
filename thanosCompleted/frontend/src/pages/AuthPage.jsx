@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import SignUpForm from "../components/SignUpForm";
 import LoginForm from "../components/LoginForm";
+import DateDisplay from "../components/DateDisplay";
 import SnapNoteBrand from "../components/SnapNoteBrand";
 import SnapNoteHomeLogo from "../components/SnapNoteHomeLogo";
 import ThemeToggle from "../components/ThemeToggle";
@@ -9,6 +10,7 @@ export default function AuthPage({ setUser }) {
   return (
     <>
       <SnapNoteHomeLogo className="page-home-logo" />
+      <DateDisplay className="page-date" />
       <SnapNoteBrand scrollParallax />
       <div className="page-theme-toggle">
         <ThemeToggle />
