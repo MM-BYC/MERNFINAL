@@ -206,10 +206,13 @@ function App() {
               </div>
               <div className="app-navbar-right">
                 <DateDisplay className="navbar-date" />
-                <ThemeToggle />
                 <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
               </div>
             </nav>
+
+            <div className="dashboard-theme-toggle">
+              <ThemeToggle />
+            </div>
 
             <div className="page-header">
               <h1 className="page-title">Dashboard</h1>
