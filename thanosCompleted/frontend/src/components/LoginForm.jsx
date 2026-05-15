@@ -1,6 +1,6 @@
 // LoginForm.jsx
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as usersService from "../utilities/users-service";
 
 export default function LoginForm({ setUser }) {
@@ -10,6 +10,19 @@ export default function LoginForm({ setUser }) {
   });
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const updateTheme = () => {
+      const theme = document.documentElement.getAttribute("data-theme");
+      setIsDark(theme === "dark");
+    };
+
+    updateTheme();
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, { attributes: true });
+    return () => observer.disconnect();
+  }, []);
 
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
@@ -83,7 +96,7 @@ export default function LoginForm({ setUser }) {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="black"
+                  stroke={isDark ? "white" : "black"}
                   strokeWidth="2"
                 >
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
@@ -95,7 +108,7 @@ export default function LoginForm({ setUser }) {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="black"
+                  stroke={isDark ? "white" : "black"}
                   strokeWidth="2"
                 >
                   <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
