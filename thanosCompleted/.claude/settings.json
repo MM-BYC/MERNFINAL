@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill *)",
+      "Bash(lsof -ti:5173)",
+      "mcp__render__list_deploys",
+      "mcp__render__list_workspaces",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Read(//Users/michaelm/.claude/projects/-Users-michaelm-Sandbox-PerScholas-rtt31-ClassdemoCodes-MERNFINAL/memory/**)"
+    ]
+  }
+}
