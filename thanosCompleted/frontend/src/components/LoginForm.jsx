@@ -9,6 +9,7 @@ export default function LoginForm({ setUser }) {
     password: "",
   });
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
@@ -45,18 +46,47 @@ export default function LoginForm({ setUser }) {
         </div>
         <div className="auth-field">
           <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={credentials.password}
+              onChange={handleChange}
+              required
+              style={{ paddingRight: "40px", width: "100%" }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: "absolute",
+                right: "10px",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "18px",
+                padding: "0",
+              }}
+              title={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? "👁️" : "👁️‍🗨️"}
+            </button>
+          </div>
         </div>
         {error && <p className="auth-error">{error}</p>}
-        <button className="auth-btn" type="submit">Log In</button>
+        <button className="auth-btn" type="submit">
+          Log In
+        </button>
         <p style={{ textAlign: "center", marginTop: "1rem" }}>
-          <a href="/forgot-password" className="auth-link">Forgot Password?</a>
+          <a href="/forgot-password" className="auth-link">
+            Forgot Password?
+          </a>
         </p>
       </form>
     </div>
