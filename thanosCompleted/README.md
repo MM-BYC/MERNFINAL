@@ -3,6 +3,8 @@
 **A personal note-taking and task management web application.**
 Organize your thoughts, tasks, and lists into cards — accessible from any device, any browser.
 
+SnapNote is a MERN full-stack note management app built rapidly in just a couple of days with AI-assisted coding, not weeks or months. It includes user authentication, email verification, password reset, dark/light mode, and an interactive dashboard for creating, editing, organizing, and deleting notes with a polished responsive UI.
+
 🔗 **Live App:** [https://mernfinal-kxun.onrender.com](https://mernfinal-kxun.onrender.com)
 
 ---
