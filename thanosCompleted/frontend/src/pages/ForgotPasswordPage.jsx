@@ -3,6 +3,7 @@ import { forgotPassword } from "../utilities/users-service";
 import "../App.css";
 import DateDisplay from "../components/DateDisplay";
 import SnapNoteBrand from "../components/SnapNoteBrand";
+import SnapNoteHomeLogo from "../components/SnapNoteHomeLogo";
 import ThemeToggle from "../components/ThemeToggle";
 
 export default function ForgotPasswordPage() {
@@ -23,6 +24,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <>
+      <SnapNoteHomeLogo className="page-home-logo" />
       <DateDisplay className="page-date" />
       <SnapNoteBrand scrollParallax />
       <div className="page-theme-toggle">

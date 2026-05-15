@@ -75,6 +75,48 @@ body {
   right: 1.5rem;
 }
 
+/* Linked SnapNote logo */
+.snapnote-home-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  color: #005f50;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  letter-spacing: 0;
+  border-radius: 999px;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.snapnote-home-logo:hover {
+  filter: drop-shadow(0 8px 14px rgba(0, 168, 140, 0.22));
+  transform: translateY(-1px);
+}
+
+.snapnote-home-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 18px rgba(0, 105, 88, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.snapnote-home-mark svg {
+  display: block;
+}
+
+.page-home-logo {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  z-index: 20;
+}
+
 /* App Brand */
 @keyframes mint-metal-shimmer {
   0%   { background-position: 0% 50%; }
@@ -162,7 +204,12 @@ body {
 .app-navbar-left {
   display: flex;
   align-items: center;
+  gap: 0.65rem;
   min-width: 0;
+}
+
+.navbar-home-logo .snapnote-home-text {
+  display: none;
 }
 
 .app-navbar-right {
@@ -942,6 +989,15 @@ body {
     right: 1rem;
   }
 
+  .page-home-logo {
+    top: 0.5rem;
+    left: 1rem;
+  }
+
+  .snapnote-home-text {
+    display: none;
+  }
+
   .app-navbar {
     padding: 0.6rem 0.75rem;
   }
@@ -1005,6 +1061,17 @@ body {
   .page-date {
     top: 0.25rem;
     right: 0.75rem;
+  }
+
+  .page-home-logo {
+    top: 0.25rem;
+    left: 0.75rem;
+  }
+
+  .snapnote-home-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
   }
 
   .page-title {
@@ -1230,6 +1297,15 @@ body {
 
 [data-theme="dark"] .date-date {
   color: #b0b0cc;
+}
+
+[data-theme="dark"] .snapnote-home-logo {
+  color: #d8fff6;
+}
+
+[data-theme="dark"] .snapnote-home-mark {
+  background: rgba(12, 18, 28, 0.72);
+  box-shadow: 0 6px 18px rgba(0, 252, 206, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="dark"] .logout-btn {

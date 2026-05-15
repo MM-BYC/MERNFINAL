@@ -2,11 +2,13 @@ import { React, useState } from "react";
 import SignUpForm from "../components/SignUpForm";
 import LoginForm from "../components/LoginForm";
 import SnapNoteBrand from "../components/SnapNoteBrand";
+import SnapNoteHomeLogo from "../components/SnapNoteHomeLogo";
 import ThemeToggle from "../components/ThemeToggle";
 export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(false);
   return (
     <>
+      <SnapNoteHomeLogo className="page-home-logo" />
       <SnapNoteBrand scrollParallax />
       <div className="page-theme-toggle">
         <ThemeToggle />

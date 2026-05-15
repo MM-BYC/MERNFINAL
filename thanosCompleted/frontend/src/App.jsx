@@ -5,6 +5,7 @@ import Index from "./components/Index";
 import AuthPage from "./pages/AuthPage";
 import DateDisplay from "./components/DateDisplay";
 import SnapNoteBrand from "./components/SnapNoteBrand";
+import SnapNoteHomeLogo from "./components/SnapNoteHomeLogo";
 import ThemeToggle from "./components/ThemeToggle";
 import Tutorial from "./components/Tutorial";
 import { getUser, logOut, getToken } from "./utilities/users-service";
@@ -200,6 +201,7 @@ function App() {
           <div className="dashboard-sticky">
             <nav className="app-navbar">
               <div className="app-navbar-left">
+                <SnapNoteHomeLogo className="navbar-home-logo" />
                 <SnapNoteBrand compact />
               </div>
               <div className="app-navbar-right">
