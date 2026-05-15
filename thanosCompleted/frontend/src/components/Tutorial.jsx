@@ -5,7 +5,7 @@ const STEPS = [
   {
     query: () => document.querySelector(".theme-toggle"),
     title: "Theme",
-    text: "Click to cycle the theme: Light → System → Dark",
+    text: "Slide Dark mode on or off",
   },
   {
     query: () => document.querySelector(".new-note-btn"),

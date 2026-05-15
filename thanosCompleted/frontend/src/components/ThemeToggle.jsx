@@ -1,37 +1,33 @@
 import { useState, useEffect } from "react";
 
-const THEMES = ['light', 'dark', 'system'];
-const THEME_ICONS = { light: '☀', dark: '🌙', system: '⚙' };
-
 function ThemeToggle() {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem('snapnote-theme') || 'system'
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem("snapnote-theme") === "dark"
   );
 
-  const cycleTheme = () => {
-    setTheme(prev => {
-      const next = THEMES[(THEMES.indexOf(prev) + 1) % THEMES.length];
-      localStorage.setItem('snapnote-theme', next);
-      return next;
-    });
+  const toggleDarkMode = () => {
+    setDarkMode((enabled) => !enabled);
   };
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'system') {
-      const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      root.setAttribute('data-theme', mq.matches ? 'dark' : 'light');
-      const handler = (e) => root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-      mq.addEventListener('change', handler);
-      return () => mq.removeEventListener('change', handler);
-    } else {
-      root.setAttribute('data-theme', theme);
-    }
-  }, [theme]);
+    const theme = darkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("snapnote-theme", theme);
+  }, [darkMode]);
 
   return (
-    <button className="theme-toggle" onClick={cycleTheme} title={`Theme: ${theme}`}>
-      {THEME_ICONS[theme]} {theme.charAt(0).toUpperCase() + theme.slice(1)}
+    <button
+      type="button"
+      className="theme-toggle"
+      role="switch"
+      aria-checked={darkMode}
+      onClick={toggleDarkMode}
+      title="Dark mode"
+    >
+      <span className="theme-toggle-label">Dark mode</span>
+      <span className="theme-switch" aria-hidden="true">
+        <span className="theme-switch-thumb" />
+      </span>
     </button>
   );
 }
