@@ -202,13 +202,14 @@ function App() {
             <nav className="app-navbar">
               <div className="app-navbar-left">
                 <SnapNoteHomeLogo className="navbar-home-logo" />
-                <SnapNoteBrand compact />
               </div>
               <div className="app-navbar-right">
                 <DateDisplay className="navbar-date" />
                 <button className="logout-btn" onClick={() => { logOut(); setUser(null); }}>Log Out</button>
               </div>
             </nav>
+
+            <SnapNoteBrand scrollParallax />
 
             <div className="dashboard-theme-toggle">
               <ThemeToggle />
