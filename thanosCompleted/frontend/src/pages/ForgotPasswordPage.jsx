@@ -23,32 +23,34 @@ export default function ForgotPasswordPage() {
 
   return (
     <>
-      <div className="page-theme-toggle"><ThemeToggle /></div>
       <DateDisplay className="page-date" />
       <SnapNoteBrand scrollParallax />
-    <div className="auth-card">
-      <h2 className="auth-title">Forgot Password</h2>
-      {message ? (
-        <p style={{ textAlign: "center", color: "#4a90e2" }}>{message}</p>
-      ) : (
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <div className="auth-field">
-            <label>Enter your email address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          {error && <p className="auth-error">{error}</p>}
-          <button className="auth-btn" type="submit">Send Reset Link</button>
-        </form>
-      )}
-      <p style={{ textAlign: "center", marginTop: "1rem" }}>
-        <a href="/" className="auth-link">Back to Login</a>
-      </p>
-    </div>
+      <div className="page-theme-toggle">
+        <ThemeToggle />
+      </div>
+      <div className="auth-card">
+        <h2 className="auth-title">Forgot Password</h2>
+        {message ? (
+          <p style={{ textAlign: "center", color: "#4a90e2" }}>{message}</p>
+        ) : (
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <div className="auth-field">
+              <label>Enter your email address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            {error && <p className="auth-error">{error}</p>}
+            <button className="auth-btn" type="submit">Send Reset Link</button>
+          </form>
+        )}
+        <p style={{ textAlign: "center", marginTop: "1rem" }}>
+          <a href="/" className="auth-link">Back to Login</a>
+        </p>
+      </div>
     </>
   );
 }

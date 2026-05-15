@@ -28,45 +28,47 @@ export default function ResetPasswordPage() {
 
   return (
     <>
-    <div className="page-theme-toggle"><ThemeToggle /></div>
-    <DateDisplay className="page-date" />
-    <SnapNoteBrand scrollParallax />
-    <div className="auth-card">
-      <h2 className="auth-title">Reset Password</h2>
-      {message ? (
-        <>
-          <p style={{ textAlign: "center", color: "#4a90e2" }}>{message}</p>
-          <a href="/" className="auth-btn" style={{ display: "block", textAlign: "center", marginTop: "1rem", textDecoration: "none" }}>
-            Go to Login
-          </a>
-        </>
-      ) : (
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <div className="auth-field">
-            <label>New Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="auth-field">
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              required
-            />
-          </div>
-          {error && <p className="auth-error">{error}</p>}
-          <button className="auth-btn" type="submit" disabled={disable}>
-            Reset Password
-          </button>
-        </form>
-      )}
-    </div>
+      <DateDisplay className="page-date" />
+      <SnapNoteBrand scrollParallax />
+      <div className="page-theme-toggle">
+        <ThemeToggle />
+      </div>
+      <div className="auth-card">
+        <h2 className="auth-title">Reset Password</h2>
+        {message ? (
+          <>
+            <p style={{ textAlign: "center", color: "#4a90e2" }}>{message}</p>
+            <a href="/" className="auth-btn" style={{ display: "block", textAlign: "center", marginTop: "1rem", textDecoration: "none" }}>
+              Go to Login
+            </a>
+          </>
+        ) : (
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <div className="auth-field">
+              <label>New Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="auth-field">
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                required
+              />
+            </div>
+            {error && <p className="auth-error">{error}</p>}
+            <button className="auth-btn" type="submit" disabled={disable}>
+              Reset Password
+            </button>
+          </form>
+        )}
+      </div>
     </>
   );
 }

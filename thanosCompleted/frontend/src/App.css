@@ -1077,11 +1077,12 @@ body {
 }
 
 /* ===================== THEME TOGGLE ===================== */
-/* Positioned container for standalone pages */
+/* Theme switch on standalone pages */
 .page-theme-toggle {
-  position: absolute;
-  top: 1rem;
-  left: 1.5rem;
+  display: flex;
+  justify-content: center;
+  margin: 0.15rem auto 0;
+  position: relative;
   z-index: 10;
 }
 

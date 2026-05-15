@@ -19,18 +19,20 @@ export default function VerifyEmailPage() {
 
   return (
     <>
-    <div className="page-theme-toggle"><ThemeToggle /></div>
-    <DateDisplay className="page-date" />
-    <SnapNoteBrand scrollParallax />
-    <div className="auth-card">
-      <h2 className="auth-title">Email Verification</h2>
-      <p style={{ textAlign: "center", color: success ? "#4a90e2" : "#d9534f" }}>{message}</p>
-      {success && (
-        <a href="/" className="auth-btn" style={{ display: "block", textAlign: "center", marginTop: "1rem", textDecoration: "none" }}>
-          Go to Login
-        </a>
-      )}
-    </div>
+      <DateDisplay className="page-date" />
+      <SnapNoteBrand scrollParallax />
+      <div className="page-theme-toggle">
+        <ThemeToggle />
+      </div>
+      <div className="auth-card">
+        <h2 className="auth-title">Email Verification</h2>
+        <p style={{ textAlign: "center", color: success ? "#4a90e2" : "#d9534f" }}>{message}</p>
+        {success && (
+          <a href="/" className="auth-btn" style={{ display: "block", textAlign: "center", marginTop: "1rem", textDecoration: "none" }}>
+            Go to Login
+          </a>
+        )}
+      </div>
     </>
   );
 }
