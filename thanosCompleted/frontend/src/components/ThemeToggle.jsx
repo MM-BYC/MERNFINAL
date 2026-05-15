@@ -24,10 +24,11 @@ function ThemeToggle() {
       onClick={toggleDarkMode}
       title="Dark mode"
     >
-      <span className="theme-toggle-label">Dark mode</span>
+      <span className="theme-toggle-label theme-toggle-label-light">Light mode</span>
       <span className="theme-switch" aria-hidden="true">
         <span className="theme-switch-thumb" />
       </span>
+      <span className="theme-toggle-label theme-toggle-label-dark">Dark mode</span>
     </button>
   );
 }
