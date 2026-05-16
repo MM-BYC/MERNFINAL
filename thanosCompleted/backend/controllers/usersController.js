@@ -18,7 +18,10 @@ async function create(req, res) {
     const verificationToken = crypto.randomBytes(32).toString("hex");
     let user = await User.create({ ...req.body, verificationToken });
     await sendVerificationEmail(user.email, verificationToken);
-    res.json({ message: "Account created! Please check your email to verify your account." });
+    res.json({
+      message:
+        "Account created! We sent a verification email to your inbox. Please open that email and click the verification link before logging in to SnapNote. If you do not see it right away, check your spam or junk folder and move the message to your inbox.",
+    });
   } catch (error) {
     console.log("SIGNUP ERROR:", error.code, error.message);
     const message = error.code === 11000 ? "Email already exists" : "Sign Up Failed";

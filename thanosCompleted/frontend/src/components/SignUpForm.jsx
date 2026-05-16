@@ -80,9 +80,7 @@ export default class SignUpForm extends Component {
         <div className="auth-card">
           <h2 className="auth-title">Check Your Email</h2>
           <p className="auth-info-message">
-            Verification email sent. Check your inbox to verify your SnapNote
-            account. If it landed in spam or junk, move it to your inbox, then
-            open the email and follow the verification link.
+            {this.state.success}
           </p>
         </div>
       );
