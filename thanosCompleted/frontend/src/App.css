@@ -963,6 +963,19 @@ body {
   text-align: center;
 }
 
+.auth-info-message {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(52, 199, 89, 0.38);
+  border-radius: 8px;
+  background: rgba(52, 199, 89, 0.12);
+  color: #1f5f37;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: left;
+}
+
 .auth-link {
   color: #4a90e2;
   font-size: 0.875rem;
@@ -1559,6 +1572,12 @@ body {
   background: rgba(40, 50, 70, 0.3);
   border-color: rgba(60, 80, 110, 0.3);
   color: #3a5070;
+}
+
+[data-theme="dark"] .auth-info-message {
+  background: rgba(52, 199, 89, 0.14);
+  border-color: rgba(52, 199, 89, 0.34);
+  color: #bbf7d0;
 }
 
 [data-theme="dark"] .note-submit-btn {

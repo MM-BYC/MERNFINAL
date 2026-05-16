@@ -12,11 +12,12 @@ SnapNote is a MERN full-stack note management app built rapidly in just a couple
 ## Table of Contents
 
 1. [What Is SnapNote?](#what-is-snapnote)
-2. [Getting Started](#getting-started)
-3. [How the Pages Connect](#how-the-pages-connect)
-4. [Cards and Items](#cards-and-items)
-5. [Data Structure](#data-structure)
-6. [Account & Security](#account--security)
+2. [Project Functionality](#project-functionality)
+3. [Getting Started](#getting-started)
+4. [How the Pages Connect](#how-the-pages-connect)
+5. [Cards and Items](#cards-and-items)
+6. [Data Structure](#data-structure)
+7. [Account & Security](#account--security)
 
 ---
 
@@ -25,6 +26,61 @@ SnapNote is a MERN full-stack note management app built rapidly in just a couple
 SnapNote is a web-based notes app where each **Note** is a card on your dashboard. Each card holds a title and a list of items underneath it. You can create as many cards as you need, add items to them, move items between cards by dragging, and delete what you no longer need.
 
 Everything is tied to your personal account — no one else can see your notes.
+
+---
+
+## Project Functionality
+
+### User Account Features
+
+- Create a new account with first name, last name, email, and password.
+- Verify email accounts before allowing login.
+- Log in with JWT-based authentication.
+- Stay signed in during the active token session.
+- Log out securely from the dashboard.
+- Request a password reset email from the login page.
+- Reset password using a temporary reset token.
+- Protect note data so each user only sees their own cards and items.
+
+### Notes Dashboard
+
+- View a personalized dashboard after login.
+- Create new note cards from a modal form.
+- Add a title and optional first item when creating a card.
+- Edit note card titles directly from the dashboard.
+- Add new items to existing cards.
+- Edit item text inside cards.
+- Mark items with checkboxes before deletion.
+- Delete selected checked items from a card.
+- Delete an entire card and all of its items.
+- Automatically remove a card when all of its items are deleted.
+
+### Drag-and-Drop Organization
+
+- Drag individual items from one card to another.
+- Move items without duplicating them.
+- Preserve each card's updated item list after moving items.
+- Refresh dashboard data from the backend if an item move fails.
+
+### Interface and Experience
+
+- Responsive React UI built for desktop and mobile screens.
+- Light mode and dark mode with an iOS-style slider switch.
+- Consistent SnapNote branding across auth, password, verification, and dashboard pages.
+- Clickable SnapNote logo that routes back to the main landing page.
+- Day-of-week and date display across the app.
+- Password visibility toggles on login, signup, and confirm password fields.
+- Guided tutorial overlay for key dashboard actions.
+- Glassmorphism-inspired styling with animated SnapNote title treatment.
+
+### Backend and Data Handling
+
+- Express API for user authentication and note management.
+- MongoDB/Mongoose models for users and notes.
+- Bcrypt password hashing before saving user passwords.
+- JWT token generation and middleware-protected routes.
+- Email service support for verification and password reset messages.
+- User-owned note queries so private notes stay scoped to the logged-in account.
 
 ---
 
@@ -190,7 +246,7 @@ On the Log In page, click **Forgot Password**. Enter your email. If an account e
 Click **Log Out** on the dashboard to end your session immediately. Your notes remain saved and will be there when you log back in.
 
 ### Theme
-The app supports **Light**, **Dark**, and **System** (follows your device setting) display modes. Click the theme toggle in the top-left corner of any page to switch.
+The app supports **Light mode** and **Dark mode**. Use the iOS-style slider below the SnapNote title or dashboard navbar to switch between modes.
 
 ---
 
@@ -232,8 +288,9 @@ thanosCompleted/
         │   ├── SignUpForm.jsx       # Create account form
         │   ├── LoginForm.jsx        # Log in form
         │   ├── SnapNoteBrand.jsx   # Animated brand title with parallax effect
-        │   ├── ThemeToggle.jsx     # Light / Dark / System theme switcher
-        │   ├── DateDisplay.jsx     # Live date display shown on the dashboard
+        │   ├── ThemeToggle.jsx     # Light / Dark theme slider
+        │   ├── DateDisplay.jsx     # Day and date display shown across pages
+        │   ├── SnapNoteHomeLogo.jsx # Clickable brand logo linking back to the landing page
         │   ├── Navbar.jsx          # Navigation bar component
         │   └── Profile.jsx         # User profile display component
         ├── pages/
