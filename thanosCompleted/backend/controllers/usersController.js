@@ -58,15 +58,18 @@ async function login(req, res) {
 }
 
 async function forgotPassword(req, res) {
+  const resetMessage =
+    "If a SnapNote account exists for that email, we sent a password reset link to your inbox. Please open the email and follow the reset link. If you do not see it right away, check your spam or junk folder, move the message to your inbox, then open the reset link from there.";
+
   try {
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.json({ message: "If that email exists, a reset link has been sent." });
+    if (!user) return res.json({ message: resetMessage });
     const token = crypto.randomBytes(32).toString("hex");
     user.resetPasswordToken = token;
     user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
     await user.save();
     await sendPasswordResetEmail(user.email, token);
-    res.json({ message: "If that email exists, a reset link has been sent." });
+    res.json({ message: resetMessage });
   } catch (error) {
     console.log("FORGOT PASSWORD ERROR:", error.message, error.response?.body);
     res.status(500).json({ message: "Something went wrong." });

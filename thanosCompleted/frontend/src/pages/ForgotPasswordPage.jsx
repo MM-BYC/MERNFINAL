@@ -33,7 +33,7 @@ export default function ForgotPasswordPage() {
       <div className="auth-card">
         <h2 className="auth-title">Forgot Password</h2>
         {message ? (
-          <p style={{ textAlign: "center", color: "#4a90e2" }}>{message}</p>
+          <p className="auth-info-message">{message}</p>
         ) : (
           <form autoComplete="off" onSubmit={handleSubmit}>
             <div className="auth-field">
