@@ -96,7 +96,7 @@ export default function Tutorial({ onClose }) {
         arrow,
       });
     }, 300);
-  }, [step]);
+  }, [current]);
 
   useEffect(() => {
     recalc();

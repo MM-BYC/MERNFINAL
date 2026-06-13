@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-function Note({ note, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
+function Note({ note, updateFunc, updateTitleFunc, addBodyFunc, deleteCheckedFunc, moveBodyFunc }) {
   const isToBuy = note.title === "To Buy";
   const isToReturn = note.title === "To Return";
   const isTrashBin = note.title === "Trash Bin";
@@ -23,7 +23,7 @@ function Note({ note, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, dele
     );
     setChecked({});
     setIsDirty(false);
-  }, [note._id, note.bodies?.length]);
+  }, [note._id, note.bodies]);
 
   const handleBodyChange = (bodyId, value) => {
     setBodies((prev) => ({ ...prev, [bodyId]: value }));
@@ -90,7 +90,9 @@ function Note({ note, deleteFunc, updateFunc, updateTitleFunc, addBodyFunc, dele
       if (data.noteId !== note._id) {
         moveBodyFunc(data.noteId, data.bodyId, data.text, note._id);
       }
-    } catch {}
+    } catch {
+      return;
+    }
   };
 
   return (
